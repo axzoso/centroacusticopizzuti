@@ -3,6 +3,9 @@
 // siede sul lato velato: `rev` lo porta a destra. Senza foto: center (titolo centrato) | left (titolo e testo a sinistra) | wide (titolo a sinistra, testo a destra).
 const { layout: chosen = 'center', tone, titolo, lead, image, imageAlt = '', imagePos = '50% 30%', rev = false } = Astro.props;
 const layout = image ? 'photo' : chosen;
+// `righe`: il titolo va spezzato in frasi, ognuna su una riga e senza andare a capo
+const { righe = false } = Astro.props;
+const frasi = righe ? titolo.split(/(?<=\.)\s+/) : null;
 const t = layout === 'photo' ? 'ink' : (tone ?? { center: 'ink', left: 'fade', wide: 'tint' }[layout]);
 const dark = t === 'blue' || t === 'ink';
 ---
@@ -12,7 +15,7 @@ const dark = t === 'blue' || t === 'ink';
       <figure class="ph-bg"><img src={image} alt={imageAlt} style={`object-position:${imagePos}`} width="1600" height="1000" fetchpriority="high" /></figure>
       <div class="container">
         <div class="ph-text">
-          <h1 class="rise">{titolo}</h1>
+          <h1 class:list={['rise', { 'h1-righe': frasi }]}>{frasi ? frasi.map((f) => <span>{f}</span>) : titolo}</h1>
           {lead && <p class="lead rise rise-2">{lead}</p>}
           <div class="rise rise-3"><slot /></div>
         </div>
@@ -22,7 +25,7 @@ const dark = t === 'blue' || t === 'ink';
   {(layout === 'center' || layout === 'left') && (
     <div class="container">
       <div class="ph-text">
-        <h1 class="rise">{titolo}</h1>
+        <h1 class:list={['rise', { 'h1-righe': frasi }]}>{frasi ? frasi.map((f) => <span>{f}</span>) : titolo}</h1>
         {lead && <p class="lead rise rise-2">{lead}</p>}
         <div class="rise rise-3"><slot /></div>
       </div>
@@ -30,7 +33,7 @@ const dark = t === 'blue' || t === 'ink';
   )}
   {layout === 'wide' && (
     <div class="container ph-grid">
-      <h1 class="rise">{titolo}</h1>
+      <h1 class:list={['rise', { 'h1-righe': frasi }]}>{frasi ? frasi.map((f) => <span>{f}</span>) : titolo}</h1>
       <div class="ph-text">
         {lead && <p class="lead rise rise-2">{lead}</p>}
         <div class="rise rise-3"><slot /></div>

@@ -231,3 +231,7 @@ a.card:hover::after { transform: translateX(4px); }
 /* Icone di accento su fondi scuri: azzurro, non blu */
 :is(.tone-blue, .tone-ink, .on-dark, .panel:not(.sky)) :is(.link-rows, .faq summary, .contact-list, .check-list, .chip) svg { color: var(--sky); }
 /* Su mobile non c'è spazio libero dal testo: le onde di testate e fascia contatti si nascondono (doc: mai sopra il testo) */
+
+/* titolo a righe fisse: una frase per riga, mai a capo; la dimensione scala con lo schermo perché la riga più lunga ci stia */
+.ph-hero h1.h1-righe { max-width: none; font-size: min(clamp(2.25rem, 1.2rem + 3.8vw, 4.5rem), 7vw); }
+.h1-righe span { display: block; white-space: nowrap; }
