@@ -1,0 +1,43 @@
+// Testi della home: il Dott. Pizzuti parla in prima persona e dà del "tu".
+// Il 1999 è l'inizio dell'esperienza professionale del Dottore, non l'apertura del Centro.
+export const COPY = {
+  h1: 'Qui trovi una persona, non un reparto.',
+  lead: 'Sono il Dott. Pasqualino Pizzuti. Ti seguo io, di persona, dalla prima visita e anche dopo.',
+  chiama: 'Chiamami',
+  whatsapp: 'Scrivimi su WhatsApp',
+  citazione: '«Il mio lavoro comincia dall’ascolto. L’apparecchio viene dopo.»',
+  citazioneFirma: 'Dott. Pasqualino Pizzuti · esperienza dal 1999',
+  metodoTitolo: 'Il percorso, passo per passo',
+  metodoLead: 'Dalla prima chiacchierata all’assistenza nel tempo: sempre con me.',
+  metodo: [
+    { titolo: 'Ascolto', testo: 'Prima di tutto parliamo. Raccontami cosa non riesci più a sentire e in quali momenti.' },
+    { titolo: 'Valutazione', testo: 'Controlliamo l’udito con calma e ti spiego, in parole semplici, cosa risulta.' },
+    { titolo: 'Scelta della soluzione', testo: 'Scelgo con te la soluzione adatta alle tue esigenze, non quella più comoda per me.' },
+    { titolo: 'Prova', testo: 'Provi la soluzione nella tua vita di tutti i giorni, prima di decidere.' },
+    { titolo: 'Regolazione', testo: 'Regolo la soluzione su di te, e la riregolo finché non ti trovi bene.' },
+    { titolo: 'Controlli e assistenza', testo: 'Non finisce con l’acquisto: controlli periodici, manutenzione e riparazione.' },
+  ],
+  caroTitolo: 'Una persona cara fatica a sentire?',
+  caroLead: 'Se cerchi aiuto per te o per qualcuno a cui tieni, chiamami: ti spiego come funziona.',
+  caroBtn: 'Scrivimi per una persona cara',
+  caroMotivo: 'caro',
+  serviziTitolo: 'Di cosa posso occuparmi',
+  servizi: [
+    { titolo: 'Controllo dell’udito', href: '/servizi/controllo-udito/', testo: 'Una valutazione accurata, per capire se e quanto serve intervenire.' },
+    { titolo: 'Apparecchi acustici', href: '/apparecchi-acustici/', testo: 'Soluzioni scelte sulle tue esigenze, con prova e regolazione personalizzata.' },
+    { titolo: 'Auricolari su misura', href: '/servizi/#auricolari', testo: 'Realizzati su di te, per comfort e protezione.' },
+    { titolo: 'Riparazione e assistenza', href: '/servizi/riparazione-assistenza-apparecchi-acustici/', testo: 'Manutenzione e riparazione degli apparecchi acustici che già usi.' },
+    { titolo: 'Contributi SSN', href: '/apparecchi-acustici/#ssn', testo: 'Per gli aventi diritto, la fornitura è possibile tramite il Servizio Sanitario Nazionale.' },
+  ],
+  plusTitolo: 'Perché scegliere me',
+  plusLead: 'Quello che le grandi aziende non possono darti: una persona sola, dall’inizio alla fine.',
+  plus: [
+    { titolo: 'Una sola persona', testo: 'Parli sempre con me, dalla prima visita in poi.', icona: 'user' },
+    { titolo: 'Prima provi, poi decidi', testo: 'L’apparecchio si prova nella tua vita di tutti i giorni.', icona: 'refresh' },
+    { titolo: 'Parole semplici', testo: 'Ti spiego ogni passo, tutte le volte che serve.', icona: 'chat' },
+    { titolo: 'Assistenza nel tempo', testo: 'Dopo la scelta non sparisco: resto il tuo riferimento.', icona: 'heart' },
+  ],
+  contattiTitolo: 'Chiamami: ne parliamo.',
+  contattiLead: 'Una telefonata è il modo più semplice per cominciare. Oppure lasciami il tuo numero e ti richiamo.',
+  formTitolo: 'Preferisci lasciarmi il tuo numero?',
+};

@@ -1,0 +1,28 @@
+---
+// Icone disegnate a mano: tratto unico da 2px, stessa griglia 24x24.
+const { name } = Astro.props;
+const paths: Record<string, string> = {
+  phone: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z',
+  whatsapp: 'M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.5L3 21zM9 8.5c0 3.5 3 6.5 6.500 6.500l1-1.500-2-1-1 .8a4.500 4.500 0 0 1-2-2l.8-1-1-2L9 8.500z',
+  pin: 'M12 21s7-6 7-11.500a7 7 0 1 0-14 0C5 15 12 21 12 21zM12 12a2.500 2.500 0 1 0 0-5 2.500 2.500 0 0 0 0 5z',
+  arrow: 'M4 12h15M13 6l6 6-6 6',
+  clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2',
+  mail: 'M4 5h16v14H4zM4 7l8 6 8-6',
+  instagram: 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM17.500 6.500h.01',
+  facebook: 'M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z',
+  up: 'M12 20V5M6 11l6-6 6 6',
+  check: 'M5 12l5 5 9-10',
+  plus: 'M12 5v14M5 12h14',
+  heart: 'M12 20s-8-5-8-11a4.500 4.500 0 0 1 8-2.500A4.500 4.500 0 0 1 20 9c0 6-8 11-8 11z',
+  chat: 'M4 5h16v11H9l-5 4V5z',
+  user: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',
+  refresh: 'M20 11a8 8 0 1 0-2.300 6M20 4v7h-7',
+  shield: 'M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6l8-3z',
+  drop: 'M12 3s6 6.500 6 11a6 6 0 0 1-12 0c0-4.500 6-11 6-11z',
+  moon: 'M20 14.500A8 8 0 1 1 9.500 4a6.500 6.500 0 0 0 10.500 10.500z',
+  music: 'M9 18V6l11-2v12M9 18a3 3 0 1 1-3-3 3 3 0 0 1 3 3zM20 16a3 3 0 1 1-3-3 3 3 0 0 1 3 3z',
+  users: 'M9 11a3.500 3.500 0 1 0 0-7 3.500 3.500 0 0 0 0 7zM2.500 20a6.500 6.500 0 0 1 13 0M16.500 4.200a3.500 3.500 0 0 1 0 6.600M18 14a6.500 6.500 0 0 1 3.500 6',
+};
+const d = paths[name];
+---
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d={d} /></svg>

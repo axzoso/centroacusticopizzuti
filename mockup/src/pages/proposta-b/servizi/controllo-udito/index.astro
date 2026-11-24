@@ -1,0 +1,30 @@
+---
+import BaseB from '../../../../layouts/b/BaseB.astro';
+import PageHeaderBox from '../../../../components/b/PageHeaderBox.astro';
+import SplitFeature from '../../../../components/b/SplitFeature.astro';
+import MethodCarousel from '../../../../components/b/MethodCarousel.astro';
+import Band from '../../../../components/b/Band.astro';
+import FaqB from '../../../../components/b/FaqB.astro';
+import IconB from '../../../../components/b/IconB.astro';
+import { CONTROLLO } from '../../../../copy/servizi';
+import { SITE } from '../../../../config';
+---
+<BaseB title={`${CONTROLLO.title} · Proposta B`} description={CONTROLLO.description} current="/servizi/">
+  <PageHeaderBox titolo={CONTROLLO.h1} lead={CONTROLLO.lead} image="/img/visita-audiogramma.jpg" imageAlt="Il Dott. Pizzuti durante un controllo dell’udito" imagePos="50% 40%">
+    <a class="b-btn b-btn--red" href={SITE.telefonoHref}><IconB name="phone" />Prenota chiamando</a>
+    <a class="b-btn b-btn--line-dark" href={SITE.whatsappHref}><IconB name="whatsapp" />WhatsApp</a>
+  </PageHeaderBox>
+
+  <SplitFeature titolo={CONTROLLO.perchiTitolo} punti={CONTROLLO.perchi}
+    image="/img/b/caffe-conversazione.jpg" imageAlt="Due persone anziane chiacchierano al tavolo di un caffè" imagePos="40% 50%" />
+
+  <MethodCarousel tone="soft" titolo={CONTROLLO.vitaTitolo} passi={CONTROLLO.vita} statico />
+
+  <SplitFeature titolo={CONTROLLO.portaTitolo} lead={CONTROLLO.porta} image="/img/b/videochiamata-coppia.jpg" imageAlt="Una coppia di anziani sorride davanti allo smartphone" reverse>
+    <div class="b-btn-row"><a class="b-btn b-btn--red" href={SITE.telefonoHref}><IconB name="phone" />Chiamami</a></div>
+  </SplitFeature>
+
+  <FaqB titolo={CONTROLLO.faqTitolo} items={CONTROLLO.faq} />
+
+  <Band tone="red" testo="Prenota il tuo controllo dell’udito." enfasi="controllo dell’udito" sotto={`${SITE.telefonoVisibile} · ${SITE.orari[0].giorni} ${SITE.orari[0].ore}`} link={{ label: 'Chiamami', href: SITE.telefonoHref }} />
+</BaseB>

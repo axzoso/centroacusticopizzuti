@@ -1,0 +1,27 @@
+---
+// Mappa Google caricata solo su richiesta (cookie di terze parti). Stessa logica di MapConsent.astro.
+import { SITE } from '../../config';
+import { bHref } from '../../b/link';
+import IconB from './IconB.astro';
+const q = encodeURIComponent(SITE.mappaQuery);
+---
+<div class="b-map" data-src={`https://maps.google.com/maps?q=${q}&z=16&output=embed`}>
+  <div class="b-map-box">
+    <span class="b-acard-ico"><IconB name="pin" /></span>
+    <p><strong>Mappa di Google Maps</strong><br />Si carica solo se lo scegli: Google può usare cookie propri. Vedi la <a href={bHref('/cookie-policy/')}>Cookie Policy</a>.</p>
+    <div class="b-btn-row">
+      <button type="button" class="b-btn b-btn--line-dark b-map-load">Mostra la mappa</button>
+      <a class="b-btn b-btn--line-dark" href={`https://www.google.com/maps/search/?api=1&query=${q}`} target="_blank" rel="noopener">Apri in Google Maps<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+    </div>
+  </div>
+</div>
+<script is:inline>
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.b-map-load');
+    if (!b) return;
+    var w = b.closest('.b-map');
+    var f = document.createElement('iframe');
+    f.src = w.getAttribute('data-src'); f.title = 'Mappa: come raggiungere il Centro Acustico Pizzuti'; f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade';
+    w.innerHTML = ''; w.appendChild(f); f.focus();
+  });
+</script>

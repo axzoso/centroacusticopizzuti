@@ -1,0 +1,23 @@
+---
+// Fascia piena con una frase e un bottone a pillola (rif. fascia Amplifon). tone: deep | red.
+// Con `image` la fascia diventa una card con foto a destra che sfuma nel campo profondo (rif. screenshot 2).
+import { bHref } from '../../b/link';
+import IconB from './IconB.astro';
+const { testo, enfasi, link, tone = 'deep', id, sotto, image, imageAlt = '', imagePos = '50% 50%' } = Astro.props;
+const i = enfasi ? testo.indexOf(enfasi) : -1;
+const parts = i >= 0 ? [testo.slice(0, i), enfasi, testo.slice(i + enfasi.length)] : [testo, '', ''];
+const btn = tone === 'red' ? 'b-btn--white' : 'b-btn--line';
+---
+<section class="b-sec b-sec--tight b-band-wrap" id={id}>
+  <div class="b-container">
+    <div class:list={['b-band', `b-band--${tone}`, 'b-deep-ctx', { 'b-band--photo': !!image }]} data-reveal>
+      {image && <img class="b-band-img" src={image} alt={imageAlt} style={`object-position:${imagePos}`} loading="lazy" width="1600" height="1067" />}
+      <div class="b-band-copy">
+        <h2 class="b-band-text">{parts[0]}{parts[1] && <strong>{parts[1]}</strong>}{parts[2]}</h2>
+        {sotto && <p class="b-band-sub">{sotto}</p>}
+        {image && link && <p class="b-band-cta"><a class:list={['b-btn', btn]} href={bHref(link.href)}>{link.label}<IconB name="arrow" class="b-arrow" /></a></p>}
+      </div>
+      {!image && link && <a class:list={['b-btn', btn]} href={bHref(link.href)}>{link.label}<IconB name="arrow" class="b-arrow" /></a>}
+    </div>
+  </div>
+</section>

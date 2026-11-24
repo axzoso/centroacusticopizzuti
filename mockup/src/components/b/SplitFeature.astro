@@ -1,0 +1,31 @@
+---
+// Testo a sinistra, foto arrotondate composte a destra (rif. "Assistenza AudioNova").
+// punti: stringhe oppure { titolo, testo }.
+import IconB from './IconB.astro';
+const { titolo, lead, punti = [], image, imageAlt, imagePos, image2, image2Alt, image2Pos, reverse = false, tone = 'white', id, level = 2 } = Astro.props;
+const H = level === 3 ? 'h3' : 'h2';
+const toneCls = tone === 'soft' ? 'b-sec--softflat' : tone === 'deep' ? 'b-sec--deep b-deep-ctx' : '';
+---
+<section class:list={['b-sec b-split', toneCls, { 'is-reverse': reverse }]} id={id}>
+  <div class="b-container b-split-grid">
+    <div class="b-split-text" data-stagger>
+      <H class="b-h2">{titolo}</H>
+      {lead && <p class="b-lead">{lead}</p>}
+      {punti.length > 0 && (
+        <ul class="b-checks">
+          {punti.map((p) => (
+            <li>
+              <span class="b-check" aria-hidden="true"><IconB name="check" /></span>
+              {typeof p === 'string' ? <span>{p}</span> : <span><strong>{p.titolo}</strong> {p.testo}</span>}
+            </li>
+          ))}
+        </ul>
+      )}
+      <slot />
+    </div>
+    <div class:list={['b-split-media', { 'is-duo': !!image2 }]}>
+      <img class="b-split-a" src={image} alt={imageAlt} style={imagePos ? `object-position:${imagePos}` : undefined} loading="lazy" width="1600" height="1067" />
+      {image2 && <img class="b-split-b" src={image2} alt={image2Alt} style={image2Pos ? `object-position:${image2Pos}` : undefined} loading="lazy" width="1600" height="1067" />}
+    </div>
+  </div>
+</section>

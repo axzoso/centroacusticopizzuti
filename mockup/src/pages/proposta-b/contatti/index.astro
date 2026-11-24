@@ -1,0 +1,55 @@
+---
+import BaseB from '../../../layouts/b/BaseB.astro';
+import PageHeaderBox from '../../../components/b/PageHeaderBox.astro';
+import ActionCards from '../../../components/b/ActionCards.astro';
+import FormB from '../../../components/b/FormB.astro';
+import MapB from '../../../components/b/MapB.astro';
+import IconB from '../../../components/b/IconB.astro';
+import { CONT } from '../../../copy/contatti';
+import { SITE } from '../../../config';
+const q = encodeURIComponent(SITE.mappaQuery);
+---
+<BaseB title={`${CONT.title} · Proposta B`} description={CONT.description} current="/contatti/">
+  <PageHeaderBox titolo={CONT.h1} lead={CONT.lead} image="/img/b/telefono-sorriso.jpg" imageAlt="Una signora sorridente al telefono" imagePos="60% 35%">
+    <div class="b-contact-big">
+      <a class="b-tel" href={SITE.telefonoHref}>{SITE.telefonoVisibile}</a>
+      <a class="b-link" href={`mailto:${SITE.email}`}><IconB name="mail" />{SITE.email}</a>
+    </div>
+    <a class="b-btn b-btn--red" href={SITE.telefonoHref}><IconB name="phone" />Chiamami</a>
+    <a class="b-btn b-btn--line-dark" href={SITE.whatsappHref}><IconB name="whatsapp" />WhatsApp</a>
+  </PageHeaderBox>
+
+  <section class="b-sec" id="dove" aria-label="Indirizzo e orari">
+    <div class="b-container b-info2" data-stagger>
+      <div class="b-info">
+        <span class="b-acard-ico"><IconB name="pin" /></span>
+        <h2 class="b-h3">{CONT.dove}</h2>
+        <p>{SITE.nome}<br />{SITE.indirizzo}</p>
+        <p><a class="b-link" href={`https://www.google.com/maps/search/?api=1&query=${q}`} target="_blank" rel="noopener">{CONT.mappaBtn}<IconB name="arrow" /><span class="visually-hidden"> (si apre in una nuova scheda)</span></a></p>
+      </div>
+      <div class="b-info">
+        <span class="b-acard-ico"><IconB name="clock" /></span>
+        <h2 class="b-h3">{CONT.orari}</h2>
+        <dl>{SITE.orari.map((o) => <div><dt>{o.giorni}</dt><dd>{o.ore}</dd></div>)}</dl>
+        <p class="b-small" style="color:var(--b-text-soft)">{CONT.orariNota}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="b-sec b-sec--softflat" aria-label="Lasciami il tuo numero">
+    <div class="b-container" style="max-width:56rem">
+      <FormB titolo={CONT.formTitolo} lead="Lasciami nome e numero: ti richiamo io, appena posso." />
+    </div>
+  </section>
+
+  <section class="b-sec" aria-labelledby="come-t">
+    <div class="b-container">
+      <div class="b-sec-head">
+        <h2 class="b-h2" id="come-t">{CONT.come}</h2>
+        <p class="b-lead">{CONT.comeLead}</p>
+      </div>
+      <ActionCards cols={3} items={CONT.come3.map((c) => ({ ...c, href: '' }))} />
+      <div style="margin-top:1.25rem"><MapB /></div>
+    </div>
+  </section>
+</BaseB>

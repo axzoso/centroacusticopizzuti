@@ -1,0 +1,47 @@
+---
+// Il percorso in card scorrevoli (rif. "Metodo Amplifon"). Con `statico` diventa una griglia.
+import { bHref } from '../../b/link';
+import IconB from './IconB.astro';
+const { titolo, lead, passi = [], cta, statico = false, id, tone = 'white' } = Astro.props;
+const uid = `mc-${(id || titolo).toString().toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 24)}`;
+---
+<section class:list={['b-sec b-method', { 'b-sec--softflat': tone === 'soft' }]} id={id} aria-labelledby={`${uid}-t`}>
+  <div class="b-container">
+    <div class="b-sec-head b-sec-head--row">
+      <h2 class="b-h2" id={`${uid}-t`}>{titolo}</h2>
+      {!statico && (
+        <div class="b-method-nav" aria-hidden="false">
+          <button type="button" class="b-circle" data-dir="-1" aria-controls={uid} aria-label="Passo precedente"><IconB name="chevron-left" /></button>
+          <button type="button" class="b-circle" data-dir="1" aria-controls={uid} aria-label="Passo successivo"><IconB name="chevron-right" /></button>
+        </div>
+      )}
+      {lead && <p class="b-lead">{lead}</p>}
+    </div>
+    <ol class:list={['b-method-track', { 'is-static': statico, n4: passi.length === 4 }]} id={uid} tabindex={statico ? undefined : 0} aria-label={statico ? undefined : `${titolo}: scorri per vedere tutti i passi`}>
+      {passi.map((p, i) => (
+        <li class="b-mstep">
+          <span class="b-mstep-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="b-h3">{p.titolo}</h3>
+          <p class="b-small">{p.testo}</p>
+        </li>
+      ))}
+    </ol>
+    {cta && <p class="b-method-cta"><a class="b-btn b-btn--line-dark" href={bHref(cta.href)}>{cta.label}<IconB name="arrow" class="b-arrow" /></a></p>}
+  </div>
+</section>
+{!statico && (
+  <script is:inline>
+    (function () {
+      document.querySelectorAll('.b-method-nav').forEach(function (nav) {
+        if (nav.dataset.ready) return; nav.dataset.ready = '1';
+        nav.addEventListener('click', function (e) {
+          var b = e.target.closest('button'); if (!b) return;
+          var t = document.getElementById(b.getAttribute('aria-controls'));
+          var card = t.querySelector('.b-mstep');
+          var step = card ? card.getBoundingClientRect().width + 20 : 320;
+          t.scrollBy({ left: step * Number(b.dataset.dir), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        });
+      });
+    })();
+  </script>
+)}

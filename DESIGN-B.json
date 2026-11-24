@@ -1,0 +1,329 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-23T00:00:00Z",
+  "title": "Design System: Centro Acustico Pizzuti · Proposta B",
+  "extensions": {
+    "colorMeta": {
+      "deep": {
+        "role": "primary",
+        "displayName": "Deep Field",
+        "canonical": "#0b1a2c",
+        "tonalRamp": [
+          "#050d16",
+          "#0b1a2c",
+          "#1a2c43",
+          "#2a3e57",
+          "#3a4f69",
+          "#6b7f99",
+          "#a9b7ca",
+          "#e6edf7"
+        ]
+      },
+      "mid": {
+        "role": "primary",
+        "displayName": "Slate Mid",
+        "canonical": "#3a4f69",
+        "tonalRamp": [
+          "#141e2b",
+          "#22324a",
+          "#3a4f69",
+          "#566b85",
+          "#7487a0",
+          "#97a7bc",
+          "#bfcad8",
+          "#e6ebf2"
+        ]
+      },
+      "glow": {
+        "role": "secondary",
+        "displayName": "Sky Glow",
+        "canonical": "#b6cae4",
+        "tonalRamp": [
+          "#1d2c40",
+          "#33476a",
+          "#52688e",
+          "#748caf",
+          "#98afcd",
+          "#b6cae4",
+          "#d3e0f0",
+          "#eef3fa"
+        ]
+      },
+      "red": {
+        "role": "tertiary",
+        "displayName": "Call Red",
+        "canonical": "#dd182d",
+        "tonalRamp": [
+          "#3d050b",
+          "#6e0a15",
+          "#9a0e1d",
+          "#b9101f",
+          "#dd182d",
+          "#e95666",
+          "#f3a1aa",
+          "#fdecee"
+        ]
+      },
+      "red-deep": {
+        "role": "tertiary",
+        "displayName": "Call Red Pressed",
+        "canonical": "#b9101f"
+      },
+      "soft": {
+        "role": "neutral",
+        "displayName": "Mist",
+        "canonical": "#e6edf7"
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#ffffff"
+      },
+      "text-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "#4a5b70"
+      },
+      "on-deep-soft": {
+        "role": "neutral",
+        "displayName": "On-Deep Soft",
+        "canonical": "#c9d6e8"
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#d5dfec"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "H1 in hero and inner headers."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles, often centered."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card and step titles."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Intro paragraphs."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, 16px."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Card copy, notes, bars, footer; the 14px floor."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons and nav."
+      }
+    },
+    "shadows": [
+      {
+        "name": "overlap",
+        "value": "0 18px 40px -18px rgba(11, 26, 44, 0.35)",
+        "purpose": "Overlapping header box, form box, duo photo."
+      },
+      {
+        "name": "lift",
+        "value": "0 6px 18px -8px rgba(11, 26, 44, 0.25)",
+        "purpose": "Stuck header, reviews, quote, open FAQ, hovered link card."
+      }
+    ],
+    "gradients": [
+      {
+        "name": "hero-fade",
+        "value": "linear-gradient(90deg, #0b1a2c 0%, rgba(11,26,44,.86) 18%, rgba(11,26,44,.35) 46%, rgba(11,26,44,0) 72%)",
+        "purpose": "Hero photo dissolving leftward into deep (mobile: 0deg)."
+      },
+      {
+        "name": "card-scrim",
+        "value": "linear-gradient(0deg, #0b1a2c 0%, rgba(11,26,44,.95) 40%, rgba(11,26,44,.7) 60%, rgba(11,26,44,0) 90%)",
+        "purpose": "Photo card upward scrim."
+      },
+      {
+        "name": "band-deep",
+        "value": "radial-gradient(120% 160% at 100% 0%, #3a4f69 0%, #0b1a2c 60%)",
+        "purpose": "Deep band."
+      },
+      {
+        "name": "section-soft",
+        "value": "linear-gradient(180deg, #ffffff 0%, #e6edf7 55%, #e6edf7 100%)",
+        "purpose": "Soft section ground."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All transitions and entrances."
+      },
+      {
+        "name": "settle",
+        "value": "scale 1.07 to 1 over 1.6s",
+        "purpose": "Hero and header photos on load."
+      },
+      {
+        "name": "rise",
+        "value": "translateY 16px + fade over 0.9s, staggered 80ms",
+        "purpose": "Hero text and header box."
+      },
+      {
+        "name": "reveal",
+        "value": "translateY 18px + fade over 0.8s, 70ms stagger",
+        "purpose": "Scroll reveal; disabled under reduced motion; visible without JS."
+      },
+      {
+        "name": "arrow-nudge",
+        "value": "translateX(4px) over 0.3s",
+        "purpose": "Arrow on hover in pills and links."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "420px"
+      },
+      {
+        "name": "sm",
+        "value": "600px"
+      },
+      {
+        "name": "mobile-bar",
+        "value": "720px"
+      },
+      {
+        "name": "md",
+        "value": "860px"
+      },
+      {
+        "name": "nav",
+        "value": "960px"
+      },
+      {
+        "name": "lg",
+        "value": "1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Call Button",
+      "kind": "button",
+      "refersTo": "button-call",
+      "description": "Red pill for call/book only.",
+      "html": "<a class=\"ds-btn ds-btn-call\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2\"/></svg>Chiamami</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:3rem;padding:.55rem 1.5rem;border-radius:999px;border:2px solid transparent;font:600 .9375rem/1.2 'Montserrat',system-ui,sans-serif;text-decoration:none;transition:background-color .25s cubic-bezier(.16,1,.3,1),color .25s}.ds-btn svg{width:1.15rem;height:1.15rem}.ds-btn-call{background:#dd182d;color:#fff}.ds-btn-call:hover{background:#b9101f}.ds-btn:focus-visible{outline:3px solid #3a4f69;outline-offset:3px}"
+    },
+    {
+      "name": "Outline Pill on Deep",
+      "kind": "button",
+      "refersTo": "button-line-on-deep",
+      "description": "Glow outline with arrow, the B signature, on deep fields.",
+      "html": "<div style=\"background:#0b1a2c;padding:24px\"><a class=\"ds-btn-od\" href=\"#\">Scopri di più<svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a></div>",
+      "css": ".ds-btn-od{display:inline-flex;align-items:center;gap:.6rem;min-height:3rem;padding:.55rem 1.5rem;border-radius:999px;border:2px solid #b6cae4;color:#fff;font:600 .9375rem/1.2 'Montserrat',system-ui,sans-serif;text-decoration:none;transition:background-color .25s,color .25s}.ds-btn-od svg{width:1.15rem;height:1.15rem;transition:transform .3s cubic-bezier(.16,1,.3,1)}.ds-btn-od:hover{background:#b6cae4;color:#0b1a2c}.ds-btn-od:hover .ds-arrow{transform:translateX(4px)}.ds-btn-od:focus-visible{outline:3px solid #b6cae4;outline-offset:3px}"
+    },
+    {
+      "name": "Outline Pill on Light",
+      "kind": "button",
+      "refersTo": "button-line-on-light",
+      "description": "Mid outline with arrow on white or mist.",
+      "html": "<a class=\"ds-btn-ol\" href=\"#\">Tutti i servizi<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn-ol{display:inline-flex;align-items:center;gap:.6rem;min-height:3rem;padding:.55rem 1.5rem;border-radius:999px;border:2px solid #3a4f69;color:#0b1a2c;font:600 .9375rem/1.2 'Montserrat',system-ui,sans-serif;text-decoration:none;transition:background-color .25s,color .25s}.ds-btn-ol svg{width:1.15rem;height:1.15rem;transition:transform .3s}.ds-btn-ol:hover{background:#0b1a2c;border-color:#0b1a2c;color:#fff}.ds-btn-ol:hover svg{transform:translateX(4px)}.ds-btn-ol:focus-visible{outline:3px solid #3a4f69;outline-offset:3px}"
+    },
+    {
+      "name": "Action Card",
+      "kind": "card",
+      "refersTo": "action-card",
+      "description": "White card with glow icon tile, title, small text, arrow.",
+      "html": "<a class=\"ds-acard\" href=\"#\"><span class=\"ds-ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z\"/><circle cx=\"12\" cy=\"10\" r=\"2.5\"/></svg></span><strong>Dove trovarmi</strong><span class=\"ds-small\">Via Roma 45, Cosenza</span><span class=\"ds-arr\">&rarr;</span></a>",
+      "css": ".ds-acard{display:flex;flex-direction:column;gap:.6rem;padding:1.75rem;max-width:20rem;background:#fff;border:1px solid #d5dfec;border-radius:1.5rem;color:#0b1a2c;text-decoration:none;font-family:'Montserrat',system-ui,sans-serif;transition:border-color .3s,box-shadow .3s,transform .3s cubic-bezier(.16,1,.3,1)}.ds-acard strong{font-size:1.25rem;font-weight:600}.ds-ico{display:grid;place-items:center;width:3rem;height:3rem;border-radius:.75rem;background:#b6cae4;margin-bottom:.9rem}.ds-ico svg{width:1.4rem;height:1.4rem}.ds-small{font-size:.875rem;color:#4a5b70}.ds-arr{align-self:flex-end;color:#3a4f69}.ds-acard:hover{border-color:#3a4f69;box-shadow:0 6px 18px -8px rgba(11,26,44,.25);transform:translateY(-3px)}.ds-acard:focus-visible{outline:3px solid #3a4f69;outline-offset:3px}"
+    },
+    {
+      "name": "Photo Card",
+      "kind": "card",
+      "refersTo": "photo-card",
+      "description": "Photo dissolving upward into deep, title, text, outline pill.",
+      "html": "<a class=\"ds-pcard\" href=\"#\"><div class=\"ds-pbody\"><strong>Controllo dell'udito</strong><span>Una valutazione accurata.</span><span class=\"ds-pill\">Scopri di più &rarr;</span></div></a>",
+      "css": ".ds-pcard{position:relative;display:flex;align-items:flex-end;min-height:16.5rem;max-width:24rem;border-radius:1.5rem;overflow:hidden;color:#fff;text-decoration:none;font-family:'Montserrat',system-ui,sans-serif;background:linear-gradient(0deg,#0b1a2c 0%,rgba(11,26,44,.95) 40%,rgba(11,26,44,.7) 60%,rgba(11,26,44,0) 90%),linear-gradient(135deg,#6b7f99,#3a4f69)}.ds-pbody{display:grid;gap:.5rem;padding:1.75rem}.ds-pbody strong{font-size:1.375rem;font-weight:600}.ds-pbody span{font-size:.875rem;color:#c9d6e8}.ds-pill{justify-self:start;margin-top:.5rem;padding:.6rem 1.25rem;border:2px solid #b6cae4;border-radius:999px;color:#fff!important;font-weight:600;transition:background-color .25s}.ds-pcard:hover .ds-pill{background:#b6cae4;color:#0b1a2c!important}.ds-pcard:focus-visible{outline:3px solid #b6cae4;outline-offset:3px}"
+    },
+    {
+      "name": "Band",
+      "kind": "custom",
+      "refersTo": "band",
+      "description": "Rounded deep band with one statement and an arrow pill.",
+      "html": "<div class=\"ds-band\"><p>Una persona cara <strong>fatica a sentire?</strong></p><a href=\"#\">Scrivimi &rarr;</a></div>",
+      "css": ".ds-band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.25rem 3rem;padding:2.5rem 3rem;border-radius:1.5rem;color:#fff;font-family:'Montserrat',system-ui,sans-serif;background:radial-gradient(120% 160% at 100% 0%,#3a4f69 0%,#0b1a2c 60%)}.ds-band p{margin:0;font-size:1.75rem;font-weight:400;letter-spacing:-.015em}.ds-band strong{font-weight:600}.ds-band a{min-height:3rem;display:inline-flex;align-items:center;padding:.55rem 1.5rem;border:2px solid #b6cae4;border-radius:999px;color:#fff;font-weight:600;text-decoration:none}.ds-band a:hover{background:#b6cae4;color:#0b1a2c}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Hairline field, mid border and glow halo on focus.",
+      "html": "<label class=\"ds-field\"><span>Il tuo nome</span><input type=\"text\"></label>",
+      "css": ".ds-field{display:grid;gap:.4rem;max-width:20rem;font-family:'Montserrat',system-ui,sans-serif;color:#0b1a2c}.ds-field span{font-size:.875rem;font-weight:600}.ds-field input{min-height:3.25rem;padding:.75rem 1rem;border:1.5px solid #d5dfec;border-radius:.75rem;background:#fff;font:inherit;transition:border-color .2s,box-shadow .2s}.ds-field input:hover{border-color:#3a4f69}.ds-field input:focus{outline:none;border-color:#3a4f69;box-shadow:0 0 0 4px rgba(182,202,228,.6)}"
+    },
+    {
+      "name": "Header Nav",
+      "kind": "nav",
+      "refersTo": "nav-link-active",
+      "description": "White sticky header, pill nav, red Chiamami.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Il Centro</a><a href=\"#\">Apparecchi acustici</a><a href=\"#\">Servizi</a><a href=\"#\">Contatti</a><a class=\"ds-cta\" href=\"#\">Chiamami</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:.25rem;padding:1rem;background:#fff;font-family:'Montserrat',system-ui,sans-serif}.ds-nav a{padding:.6rem .9rem;border-radius:999px;font-size:.9375rem;font-weight:500;color:#0b1a2c;text-decoration:none}.ds-nav a:hover,.ds-nav a[aria-current=page]{background:#e6edf7}.ds-nav a[aria-current=page]{font-weight:600}.ds-nav .ds-cta{margin-left:auto;background:#dd182d;color:#fff;font-weight:600;padding:.85rem 1.5rem}.ds-nav .ds-cta:hover{background:#b9101f}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Chain Storefront, in Pizzuti Blue",
+    "overview": "B borrows the layout grammar of the big hearing-care chains (AudioNova first, Amplifon second): services first, large rounded photo cards that dissolve into a solid colour field, a slim contact bar, pill buttons with an arrow, a swipeable method carousel, full-width rounded bands. Only the language is borrowed. No third-party logos, copy, or photos appear anywhere; all copy comes from the shared `copy/*.ts`, and the colours are Pizzuti's.\n\nDensity is that of a contemporary commercial site: 16px body, 14px secondary text (accepted by the user for B, which drops A's older-reader legibility constraint while keeping readable contrast and phone-sized tap targets). Headings are soft and tight (600, negative tracking), never heavy. Depth comes from photos fading into the deep field plus light, diffuse shadows on things that sit on top of other things.",
+    "keyCharacteristics": [
+      "Photo-to-deep fades: hero, inner-page header, photo cards and photo band all dissolve a real or stock photo into solid `deep`.",
+      "Very rounded geometry (24px) on cards, photos, boxes and bands; pills (999px) on every button and nav item.",
+      "48px pill buttons; navigation buttons carry a trailing arrow that nudges 4px on hover.",
+      "Red is an action colour only, never decoration.",
+      "Card grids alternate with plain ruled row lists so pages do not become walls of cards."
+    ],
+    "rules": [
+      {
+        "name": "The Red Means Call Rule",
+        "body": "Red fills only buttons and bands whose action is calling or booking by phone. If the action is navigation, WhatsApp, or reading more, it is an outline or white pill.",
+        "section": "colors"
+      },
+      {
+        "name": "The Glow Lives on Deep Rule",
+        "body": "Sky glow is legible only on deep. On white, outlines and arrows switch to `mid` (`button-line-on-light`); glow appears on light only as a filled tile behind a deep icon.",
+        "section": "colors"
+      },
+      {
+        "name": "The 14px Floor Rule",
+        "body": "Nothing smaller than 14px (`small`). Body stays 16px.",
+        "section": "typography"
+      },
+      {
+        "name": "The Fade Not Frame Rule",
+        "body": "Photos on deep never get a border or hard edge; they dissolve into `deep` through a gradient (sideways on desktop, upward on mobile and in photo cards).",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** fade every photo on deep into the solid field; no hard photo edges on deep.",
+      "**Do** keep red for call/book actions; WhatsApp and navigation are outline pills.",
+      "**Do** use `glow` for outlines and arrows on deep and `mid` on light.",
+      "**Do** alternate card grids with row lists, split sections and bands.",
+      "**Do** use the client's real photos for the Doctor, the studio and products; stock (Unsplash, credited in `mockup/public/img/CREDITS.md`, stored in `mockup/public/img/b/`) only for lifestyle moments."
+    ],
+    "donts": [
+      "**Don't** use any chain's logos, wording or photos; only the layout language is borrowed.",
+      "**Don't** use generated images.",
+      "**Don't** set text below 14px or headings above weight 600.",
+      "**Don't** put shadows on resting flat cards; shadows mark overlap or lift.",
+      "**Don't** reproduce proposal A's signature devices (portrait in an arch, heavy 700+ titles); ruled row lists are fine as an occasional alternative to cards, not as the page's main structure."
+    ]
+  }
+}

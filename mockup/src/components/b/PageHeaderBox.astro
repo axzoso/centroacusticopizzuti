@@ -1,0 +1,22 @@
+---
+// Testata delle pagine interne: foto con velo blu e titolo, box bianco che sale sulla foto (rif. screenshot 3).
+const { titolo, lead, image, imageAlt, imagePos = '50% 40%', note } = Astro.props;
+const hasActions = Astro.slots.has('default');
+---
+<section class="b-phead">
+  <div class="b-phead-media b-deep-ctx">
+    <img src={image} alt={imageAlt} style={`object-position:${imagePos}`} width="1600" height="1067" fetchpriority="high" />
+    <div class="b-container b-phead-title">
+      <h1 class="b-h1">{titolo}</h1>
+    </div>
+  </div>
+  <div class="b-container">
+    <div class:list={['b-phead-box', { 'has-actions': hasActions }]}>
+      <div class="b-phead-copy">
+        <p class="b-phead-lead">{lead}</p>
+        {note && <p class="b-note">{note}</p>}
+      </div>
+      {hasActions && <div class="b-btn-row b-phead-actions"><slot /></div>}
+    </div>
+  </div>
+</section>

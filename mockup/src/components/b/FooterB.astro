@@ -1,0 +1,43 @@
+---
+import { SITE, FOOTER, LEGALI } from '../../config';
+import { bHref } from '../../b/link';
+import IconB from './IconB.astro';
+const anno = 2026;
+---
+<footer class="b-footer b-deep-ctx">
+  <div class="b-container">
+    <div class="b-footer-grid">
+      <div class="b-footer-brand">
+        <img src="/logos/logo-white.png" alt={SITE.nome} width="1418" height="741" loading="lazy" />
+        <p>Centro acustico indipendente a {SITE.citta}. Ascolto su misura, dalla prima visita all’assistenza nel tempo.</p>
+        <div class="b-social">
+          {SITE.social.map((s) => <a href={s.href} target="_blank" rel="noopener" aria-label={`${s.nome} (si apre in una nuova scheda)`}><IconB name={s.icona} /></a>)}
+        </div>
+      </div>
+      {FOOTER.map((c) => (
+        <div>
+          <h2>{c.titolo}</h2>
+          <ul>{c.voci.map((v) => <li><a href={bHref(v.href)}>{v.label}</a></li>)}</ul>
+        </div>
+      ))}
+      <div class="b-fcontact">
+        <h2>Contatti</h2>
+        <ul>
+          <li><a href={SITE.telefonoHref}><IconB name="phone" />{SITE.telefonoVisibile}</a></li>
+          <li><a href={SITE.whatsappHref}><IconB name="whatsapp" />WhatsApp</a></li>
+          <li><a href={`mailto:${SITE.email}`}><IconB name="mail" />{SITE.email}</a></li>
+          <li><a href={bHref('/contatti/#dove')}><IconB name="pin" />{SITE.indirizzo}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Orari</h2>
+        <ul class="b-orari">{SITE.orari.map((o) => <li>{o.giorni}<span>{o.ore}</span></li>)}</ul>
+      </div>
+    </div>
+    <div class="b-footer-bottom">
+      <span>© {anno} {SITE.societa} · {SITE.partitaIva}</span>
+      <nav aria-label="Note legali">{LEGALI.map((l) => <a href={bHref(l.href)}>{l.label}</a>)}</nav>
+      <a class="b-to-a" href="/" data-proposta-a>Vedi la proposta A<IconB name="arrow" /></a>
+    </div>
+  </div>
+</footer>

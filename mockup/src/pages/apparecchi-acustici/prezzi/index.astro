@@ -1,0 +1,57 @@
+---
+import Page from '../../../layouts/Page.astro';
+import PageHero from '../../../components/PageHero.astro';
+import Section from '../../../components/Section.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import Faq from '../../../components/Faq.astro';
+import Icon from '../../../components/Icon.astro';
+import { PREZ as P } from '../../../copy/prezzi';
+---
+<Page title={P.title} description={P.description} current="/apparecchi-acustici/">
+  <PageHero titolo={P.h1} lead={P.lead} image="/img/prova-mani-custodia.jpg" imageAlt="Due mani estraggono un apparecchio acustico dalla custodia" imagePos="60% 50%">
+    <p class="note" style="color:var(--sky)">{P.esempioNota}</p>
+  </PageHero>
+
+  <Section tone="white" layout="wide" title={P.incideTitolo}>
+    <div class="cards c4" data-stagger>
+      {P.incide.map((c, i) => <div class="card"><span class="card-num">{i + 1}</span><h3>{c.titolo}</h3><p>{c.testo}</p></div>)}
+    </div>
+  </Section>
+
+  <section class="sec sec-feature tone-tint" aria-labelledby="inc-t">
+    <div class="feature rev">
+      <figure class="feature-img" data-wipe><img src="/img/apparecchi-quaderno-rosso.jpg" alt="Apparecchi acustici e custodia su una scrivania" style="object-position:50% 50%" loading="lazy" width="1600" height="1067" /></figure>
+      <div class="feature-text">
+        <h2 id="inc-t">{P.inclusoTitolo}</h2>
+        <ul class="check-list" data-stagger>
+          {P.incluso.map((c) => <li><Icon name="check" /><span>{c}</span></li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <Section tone="soft" layout="center" title={P.fasceTitolo}>
+    <div class="cards c3" data-stagger>
+      {P.fasce.map((c, i) => <div class:list={['card', { 'hero-card': i === 1 }]}><h3>{c.titolo}</h3><p>{c.testo}</p></div>)}
+    </div>
+  </Section>
+
+  <section class="sec tone-white" aria-labelledby="pr-t">
+    <div class="container">
+      <div class="panel sky" data-reveal>
+        <div class="panel-text">
+          <h2 id="pr-t">{P.preventivoTitolo}</h2>
+          <p class="lead">{P.preventivo}</p>
+          <p>{P.ssn} <a href="/apparecchi-acustici/#ssn">Contributi SSN</a></p>
+        </div>
+        <div class="btn-row"><a class="btn btn-primary" href="/contatti/?motivo=preventivo#form">Chiedi un preventivo<Icon name="arrow" /></a></div>
+      </div>
+    </div>
+  </section>
+
+  <Section tone="tint" layout="center" title={P.faqTitolo}>
+    <Faq items={P.faq} />
+  </Section>
+
+  <CtaBand titolo="Chiedimi un preventivo." testo="Prima il controllo, poi ti dico cosa serve e quanto costa." />
+</Page>

@@ -1,0 +1,14 @@
+---
+import { SITE } from '../../config';
+import { bHref } from '../../b/link';
+import IconB from './IconB.astro';
+---
+<div class="b-topbar">
+  <div class="b-container">
+    <a class="b-hide-sm" href={bHref('/contatti/#dove')}><IconB name="pin" />{SITE.indirizzo}</a>
+    <a href={SITE.telefonoHref}><IconB name="phone" />{SITE.telefonoVisibile}</a>
+    <a href={SITE.whatsappHref}><IconB name="whatsapp" />WhatsApp</a>
+    <a class="b-hide-sm" href={bHref('/contatti/')}><IconB name="mail" />Contatti</a>
+    <span class="b-topbar-end b-hide-sm">{SITE.orari[0].giorni} · {SITE.orari[0].ore}</span>
+  </div>
+</div>

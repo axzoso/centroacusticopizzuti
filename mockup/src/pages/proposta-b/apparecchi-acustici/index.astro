@@ -1,0 +1,62 @@
+---
+import BaseB from '../../../layouts/b/BaseB.astro';
+import PageHeaderBox from '../../../components/b/PageHeaderBox.astro';
+import SplitFeature from '../../../components/b/SplitFeature.astro';
+import PhotoCards from '../../../components/b/PhotoCards.astro';
+import Band from '../../../components/b/Band.astro';
+import FaqB from '../../../components/b/FaqB.astro';
+import IconB from '../../../components/b/IconB.astro';
+import { bHref } from '../../../b/link';
+import { APP } from '../../../copy/apparecchi';
+import { SITE, MARCHI } from '../../../config';
+
+const fotoTipi = [
+  ['/img/apparecchio-mano-arancio.jpg', 'Un apparecchio acustico retroauricolare nel palmo della mano'],
+  ['/img/apparecchi-quaderno-rosso.jpg', 'Apparecchi acustici con ricevitore nel canale su un quaderno'],
+  ['/img/auricolari-su-misura.jpg', 'Gusci di apparecchi realizzati su misura dell’orecchio'],
+  ['/img/regolazione-orecchio.jpg', 'Un apparecchio acustico molto piccolo inserito nell’orecchio'],
+];
+---
+<BaseB title={`${APP.title} · Proposta B`} description={APP.description} current="/apparecchi-acustici/">
+  <PageHeaderBox titolo={APP.h1} lead={APP.lead} image="/img/senior-apparecchio.jpg" imageAlt="Un uomo con un apparecchio acustico durante una conversazione" imagePos="55% 40%">
+    <a class="b-btn b-btn--red" href={SITE.telefonoHref}><IconB name="phone" />Chiamami</a>
+    <a class="b-btn b-btn--line-dark" href="#tipi">I tipi di apparecchio<IconB name="arrow" class="b-arrow" /></a>
+  </PageHeaderBox>
+
+  <SplitFeature titolo={APP.sceltaTitolo} lead={APP.sceltaLead} punti={APP.criteri}
+    image="/img/b/amici-risata.jpg" imageAlt="Due amici ridono insieme all’aperto" imagePos="60% 40%" />
+
+  <section class="b-sec b-sec--soft" id="tipi" aria-labelledby="tipi-t">
+    <div class="b-container">
+      <div class="b-sec-head">
+        <h2 class="b-h2" id="tipi-t">{APP.tipiTitolo}</h2>
+        <p class="b-lead">{APP.tipiLead}</p>
+      </div>
+      <PhotoCards layout="row" items={APP.tipi.map((t, i) => ({ ...t, image: fotoTipi[i][0], imageAlt: fotoTipi[i][1], href: '/contatti/?motivo=controllo#form', cta: 'Chiedimi se fa per te' }))} />
+    </div>
+  </section>
+
+  <SplitFeature titolo={APP.provaTitolo} lead={APP.provaTesto} image="/img/prova-mani-custodia.jpg" imageAlt="Un apparecchio acustico estratto dalla sua custodia"
+    image2="/img/b/caffe-conversazione.jpg" image2Alt="Due persone chiacchierano al tavolo di un caffè">
+    <div class="b-btn-row"><a class="b-btn b-btn--line-dark" href={bHref('/chi-siamo/#metodo')}>{APP.provaLink}<IconB name="arrow" class="b-arrow" /></a></div>
+  </SplitFeature>
+
+  <Band id="ssn" tone="deep" testo={APP.ssnTitolo} enfasi="Servizio Sanitario Nazionale" sotto={APP.ssnTesto} link={{ label: 'Scrivimi', href: '/contatti/?motivo=ssn#form' }} />
+
+  <section class="b-sec" aria-labelledby="marchi-t">
+    <div class="b-container">
+      <div class="b-sec-head b-sec-head--center">
+        <h2 class="b-h2" id="marchi-t">{APP.marchiTitolo}</h2>
+        <p class="b-lead">{APP.marchiTesto}</p>
+      </div>
+      <p class="b-brands" aria-label="Marchi trattati">{MARCHI.map((m) => <span>{m}</span>)}</p>
+      <p class="b-note" style="text-align:center;margin-top:1.25rem">{APP.marchiNota}</p>
+    </div>
+  </section>
+
+  <Band tone="deep" testo={APP.prezziTitolo} sotto={APP.prezziTesto} link={{ label: APP.prezziLink, href: '/apparecchi-acustici/prezzi/' }} />
+
+  <FaqB titolo={APP.faqTitolo} items={APP.faq} />
+
+  <Band tone="red" testo="Proviamo insieme, senza impegno." enfasi="senza impegno" sotto="Prenota un controllo dell’udito: da lì capiamo cosa serve davvero." link={{ label: 'Chiamami', href: SITE.telefonoHref }} />
+</BaseB>

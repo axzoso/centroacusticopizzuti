@@ -1,0 +1,47 @@
+---
+import BaseB from '../../../layouts/b/BaseB.astro';
+import PageHeaderBox from '../../../components/b/PageHeaderBox.astro';
+import SplitFeature from '../../../components/b/SplitFeature.astro';
+import MethodCarousel from '../../../components/b/MethodCarousel.astro';
+import RowList from '../../../components/b/RowList.astro';
+import PhotoCards from '../../../components/b/PhotoCards.astro';
+import Band from '../../../components/b/Band.astro';
+import IconB from '../../../components/b/IconB.astro';
+import { CHI } from '../../../copy/chi-siamo';
+import { SITE } from '../../../config';
+
+const fotoVai = [
+  ['/img/visita-audiogramma.jpg', 'Il Dott. Pizzuti durante un controllo dell’udito'],
+  ['/img/senior-apparecchio.jpg', 'Un uomo con un apparecchio acustico'],
+  ['/img/regolazione-orecchio.jpg', 'Regolazione di un apparecchio acustico'],
+];
+---
+<BaseB title={`${CHI.title} · Proposta B`} description={CHI.description} current="/chi-siamo/">
+  <PageHeaderBox titolo={CHI.h1} lead={CHI.lead} image="/img/studio-ufficio.jpg" imageAlt="Lo studio del Centro Acustico Pizzuti" imagePos="50% 50%">
+    <a class="b-btn b-btn--red" href={SITE.telefonoHref}><IconB name="phone" />Chiamami</a>
+    <a class="b-btn b-btn--line-dark" href={SITE.whatsappHref}><IconB name="whatsapp" />WhatsApp</a>
+  </PageHeaderBox>
+
+  <SplitFeature titolo={CHI.chiTitolo} image="/img/dottore-ritratto.jpg" imageAlt="Ritratto del Dott. Pasqualino Pizzuti" imagePos="50% 25%"
+    image2="/img/dottore-apparecchio.jpg" image2Alt="Il Dott. Pizzuti mostra un apparecchio acustico">
+    {CHI.chi.map((p) => <p>{p}</p>)}
+  </SplitFeature>
+
+  <MethodCarousel id="metodo" tone="soft" titolo={CHI.metodoTitolo} lead={CHI.metodoLead} passi={CHI.passi} statico />
+
+  <section class="b-sec" aria-labelledby="principi-t">
+    <div class="b-container">
+      <div class="b-sec-head"><h2 class="b-h2" id="principi-t">{CHI.principiTitolo}</h2></div>
+      <RowList cols={2} items={CHI.principi} />
+    </div>
+  </section>
+
+  <section class="b-sec b-sec--soft" aria-labelledby="vai-t">
+    <div class="b-container">
+      <div class="b-sec-head"><h2 class="b-h2" id="vai-t">{CHI.vaiTitolo}</h2></div>
+      <PhotoCards layout="row" items={CHI.vai.map((v, i) => ({ ...v, image: fotoVai[i][0], imageAlt: fotoVai[i][1], cta: 'Scopri di più' }))} />
+    </div>
+  </section>
+
+  <Band tone="red" testo="Chiamami: ne parliamo." enfasi="Chiamami" sotto={`${SITE.telefonoVisibile} · ${SITE.orari[0].giorni} ${SITE.orari[0].ore}`} link={{ label: 'Chiama ora', href: SITE.telefonoHref }} />
+</BaseB>

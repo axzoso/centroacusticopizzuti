@@ -1,0 +1,52 @@
+---
+import '../../styles/b.css';
+import TopBar from '../../components/b/TopBar.astro';
+import HeaderB from '../../components/b/HeaderB.astro';
+import FooterB from '../../components/b/FooterB.astro';
+import MobileBarB from '../../components/b/MobileBarB.astro';
+const {
+  title,
+  description = 'Centro acustico indipendente a Cosenza. Ascolto su misura, dalla prima visita all’assistenza nel tempo.',
+  current = '',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b1a2c" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content="Centro Acustico Pizzuti" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/img/dottore-ritratto.jpg" />
+    <link rel="icon" href="/logos/mark-color.png" />
+    <title>{title}</title>
+    <script is:inline>document.documentElement.classList.add('js')</script>
+  </head>
+  <body>
+    <a class="b-skip" href="#contenuto">Vai al contenuto</a>
+    <TopBar />
+    <HeaderB current={current} />
+    <main id="contenuto"><slot /></main>
+    <FooterB />
+    <MobileBarB />
+    <script is:inline>
+      (function () {
+        var els = [].slice.call(document.querySelectorAll('[data-reveal]'));
+        [].slice.call(document.querySelectorAll('[data-stagger]')).forEach(function (g) {
+          [].slice.call(g.children).forEach(function (c, i) { c.setAttribute('data-reveal', ''); c.style.setProperty('--i', i); els.push(c); });
+        });
+        if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+        els.forEach(function (e) { io.observe(e); });
+      })();
+    </script>
+  </body>
+</html>

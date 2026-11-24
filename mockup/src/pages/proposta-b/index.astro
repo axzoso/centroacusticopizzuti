@@ -1,0 +1,91 @@
+---
+import BaseB from '../../layouts/b/BaseB.astro';
+import HeroFade from '../../components/b/HeroFade.astro';
+import ActionCards from '../../components/b/ActionCards.astro';
+import PhotoCards from '../../components/b/PhotoCards.astro';
+import MethodCarousel from '../../components/b/MethodCarousel.astro';
+import SplitFeature from '../../components/b/SplitFeature.astro';
+import Band from '../../components/b/Band.astro';
+import ReviewsB from '../../components/b/ReviewsB.astro';
+import FormB from '../../components/b/FormB.astro';
+import IconB from '../../components/b/IconB.astro';
+import { bHref } from '../../b/link';
+import { COPY } from '../../copy/home';
+import { SITE } from '../../config';
+
+const foto: Record<string, string[]> = {
+  'Apparecchi acustici': ['/img/senior-apparecchio.jpg', 'Un uomo con un apparecchio acustico durante una conversazione', '55% 40%'],
+  'Controllo dell’udito': ['/img/visita-audiogramma.jpg', 'Il Dott. Pizzuti mostra un audiogramma durante una visita', '50% 40%'],
+  'Auricolari su misura': ['/img/auricolari-su-misura.jpg', 'Auricolari realizzati su misura', '50% 50%'],
+  'Riparazione e assistenza': ['/img/regolazione-orecchio.jpg', 'Regolazione di un apparecchio acustico sull’orecchio', '50% 40%'],
+  'Contributi SSN': ['/img/b/nonno-nipote.jpg', 'Un nonno sorridente con il nipotino in braccio', '60% 35%'],
+};
+const ordine = ['Apparecchi acustici', 'Controllo dell’udito', 'Riparazione e assistenza', 'Auricolari su misura', 'Contributi SSN'];
+const servizi = ordine.map((t) => {
+  const s = COPY.servizi.find((x) => x.titolo === t)!;
+  const [image, imageAlt, imagePos] = foto[t];
+  return { ...s, image, imageAlt, imagePos, cta: 'Scopri di più' };
+});
+---
+<BaseB title="Centro Acustico Pizzuti · Cosenza · Proposta B" current="/">
+  <HeroFade titolo={COPY.h1} lead={COPY.lead} image="/img/b/coppia-tavola.jpg" imageAlt="Una coppia di anziani chiacchiera sorridendo al tavolo di un caffè" imagePos="70% 50%">
+    <a class="b-btn b-btn--red" href={SITE.telefonoHref}><IconB name="phone" />{COPY.chiama}</a>
+    <a class="b-btn b-btn--line" href={SITE.whatsappHref}><IconB name="whatsapp" />{COPY.whatsapp}</a>
+  </HeroFade>
+
+  <section class="b-sec b-sec--tight" aria-label="Contatti rapidi">
+    <div class="b-container">
+      <ActionCards cols={3} items={[
+        { titolo: 'Chiamami', testo: `${SITE.telefonoVisibile} · Una telefonata è il modo più semplice per cominciare.`, href: SITE.telefonoHref, icona: 'phone' },
+        { titolo: 'Scrivimi su WhatsApp', testo: 'Ti rispondo appena posso, anche fuori orario.', href: SITE.whatsappHref, icona: 'whatsapp' },
+        { titolo: 'Dove trovarmi', testo: `${SITE.indirizzo} · ${SITE.orari[0].giorni} ${SITE.orari[0].ore}`, href: '/contatti/#dove', icona: 'pin' },
+      ]} />
+    </div>
+  </section>
+
+  <section class="b-sec b-sec--white" aria-labelledby="serv-t">
+    <div class="b-container">
+      <div class="b-sec-head b-sec-head--row">
+        <h2 class="b-h2" id="serv-t">{COPY.serviziTitolo}</h2>
+        <a class="b-btn b-btn--line-dark" href={bHref('/servizi/')}>Tutti i servizi<IconB name="arrow" class="b-arrow" /></a>
+      </div>
+      <PhotoCards layout="bento" items={servizi} />
+    </div>
+  </section>
+
+  <MethodCarousel titolo={COPY.metodoTitolo} lead={COPY.metodoLead} passi={COPY.metodo} cta={{ label: 'Il mio metodo', href: '/chi-siamo/#metodo' }} />
+
+  <SplitFeature tone="soft" titolo={COPY.plusTitolo} lead={COPY.plusLead} punti={COPY.plus}
+    image="/img/dottore-ritratto.jpg" imageAlt="Ritratto del Dott. Pasqualino Pizzuti" imagePos="50% 25%"
+    image2="/img/dottore-apparecchio.jpg" image2Alt="Il Dott. Pizzuti mostra un apparecchio acustico">
+    <figure class="b-quote">
+      <blockquote>{COPY.citazione}</blockquote>
+      <figcaption>{COPY.citazioneFirma}</figcaption>
+    </figure>
+    <div class="b-btn-row">
+      <a class="b-btn b-btn--line-dark" href={bHref('/chi-siamo/')}>Il Centro e il Metodo<IconB name="arrow" class="b-arrow" /></a>
+    </div>
+  </SplitFeature>
+
+  <Band tone="deep" image="/img/b/abbraccio-nonna.jpg" imageAlt="Una nonna abbraccia sorridendo la nipotina" imagePos="40% 40%" testo={COPY.caroTitolo} enfasi="persona cara" sotto={COPY.caroLead} link={{ label: COPY.caroBtn, href: '/contatti/?motivo=caro#form' }} />
+
+  <ReviewsB />
+
+  <section class="b-sec b-sec--softflat" id="contatti" aria-labelledby="cont-t">
+    <div class="b-container b-two">
+      <div class="b-stack">
+        <h2 class="b-h2" id="cont-t">{COPY.contattiTitolo}</h2>
+        <p class="b-lead">{COPY.contattiLead}</p>
+        <div class="b-contact-big">
+          <a class="b-tel" href={SITE.telefonoHref}>{SITE.telefonoVisibile}</a>
+          <span class="b-small">{SITE.orari.map((o) => `${o.giorni}: ${o.ore}`).join(' · ')}</span>
+        </div>
+        <div class="b-btn-row">
+          <a class="b-btn b-btn--red" href={SITE.telefonoHref}><IconB name="phone" />{COPY.chiama}</a>
+          <a class="b-btn b-btn--line-dark" href={SITE.whatsappHref}><IconB name="whatsapp" />{COPY.whatsapp}</a>
+        </div>
+      </div>
+      <FormB titolo={COPY.formTitolo} />
+    </div>
+  </section>
+</BaseB>

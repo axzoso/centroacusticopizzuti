@@ -1,0 +1,56 @@
+---
+import Page from '../../layouts/Page.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import MapConsent from '../../components/MapConsent.astro';
+import Icon from '../../components/Icon.astro';
+import { SITE } from '../../config';
+import { CONT } from '../../copy/contatti';
+---
+<Page title={CONT.title} description={CONT.description} current="/contatti/">
+  <PageHero titolo={CONT.h1} lead={CONT.lead} image="/img/b/telefono-sorriso.jpg" imageAlt="Una signora sorride al telefono" imagePos="70% 35%">
+    <div class="btn-row">
+      <a class="btn btn-primary" href={SITE.telefonoHref}><Icon name="phone" />{SITE.telefonoVisibile}</a>
+      <a class="btn btn-secondary" href={SITE.whatsappHref}><Icon name="whatsapp" />Scrivimi su WhatsApp</a>
+    </div>
+  </PageHero>
+
+  <Section tone="white" layout="split" title={CONT.dove}>
+    <div class="prose">
+      <ul class="contact-list" data-stagger>
+        <li><Icon name="pin" /><span>{SITE.indirizzo}</span></li>
+        <li><Icon name="phone" /><a href={SITE.telefonoHref}>{SITE.telefonoVisibile}</a></li>
+        <li><Icon name="whatsapp" /><a href={SITE.whatsappHref}>Scrivimi su WhatsApp</a></li>
+        <li><Icon name="mail" /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+      </ul>
+      <img class="contact-photo" src="/img/vetrina-centro.jpg" alt="La vetrina del Centro Acustico Pizzuti con il Dott. Pizzuti sulla porta" loading="lazy" width="1283" height="900" />
+      <MapConsent class="contact-map" />
+    </div>
+  </Section>
+
+  <Section tone="soft" layout="center" title={CONT.orari} lead={CONT.orariNota}>
+    <div class="cards c3" data-stagger>
+      {SITE.orari.map((o, i) => <div class:list={['card', { 'hero-card': i === 0 }]}><h3>{o.giorni}</h3><p>{o.ore}</p></div>)}
+    </div>
+  </Section>
+
+  <Section tone="tint" layout="wide" id="come-arrivare" title={CONT.come} lead={CONT.comeLead}>
+    <div class="cards c3" data-stagger>
+      {CONT.come3.map((c) => <div class="card"><span class="card-num"><Icon name={c.icona} /></span><h3>{c.titolo}</h3><p>{c.testo}</p></div>)}
+    </div>
+    <p style="margin-top:2rem"><a class="btn btn-secondary" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.mappaQuery)}`} target="_blank" rel="noopener"><Icon name="pin" />{CONT.mappaBtn}<span class="visually-hidden"> (si apre in una nuova scheda)</span></a></p>
+  </Section>
+
+  <section class="sec tone-sky" id="form" aria-labelledby="fm-t">
+    <div class="container">
+      <div class="panel form-panel" data-reveal>
+        <div class="panel-text">
+          <h2 id="fm-t">{CONT.formTitolo}</h2>
+          <p class="lead">Ti richiamo io, appena posso.</p>
+        </div>
+        <div class="form-box"><ContactForm /></div>
+      </div>
+    </div>
+  </section>
+</Page>

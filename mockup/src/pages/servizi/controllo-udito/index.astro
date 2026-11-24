@@ -1,0 +1,49 @@
+---
+import Page from '../../../layouts/Page.astro';
+import PageHero from '../../../components/PageHero.astro';
+import Section from '../../../components/Section.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import Faq from '../../../components/Faq.astro';
+import Icon from '../../../components/Icon.astro';
+import { SITE } from '../../../config';
+import { CONTROLLO as C } from '../../../copy/servizi';
+---
+<Page title={C.title} description={C.description} current="/servizi/">
+  <PageHero titolo={C.h1} lead={C.lead} image="/img/b/nonno-nipote.jpg" imageAlt="Un nonno sorridente con il nipotino in braccio" imagePos="75% 35%">
+    <div class="btn-row">
+      <a class="btn btn-primary" href={SITE.telefonoHref}><Icon name="phone" />Prenota: {SITE.telefonoVisibile}</a>
+      <a class="btn btn-secondary" href={SITE.whatsappHref}><Icon name="whatsapp" />WhatsApp</a>
+    </div>
+  </PageHero>
+
+  <Section tone="tint" layout="center" title={C.perchiTitolo}>
+    <ul class="chips" data-stagger>
+      {C.perchi.map((p) => <li class="chip"><Icon name="check" /><span>{p}</span></li>)}
+    </ul>
+  </Section>
+
+  <Section tone="white" layout="wide" title={C.vitaTitolo}>
+    <ol class="steps c4" data-stagger>
+      {C.vita.map((p) => <li><h3>{p.titolo}</h3><p>{p.testo}</p></li>)}
+    </ol>
+  </Section>
+
+  <figure class="banner" data-wipe><img src="/img/visita-audiogramma.jpg" alt="Il Dott. Pizzuti mostra a una paziente l’esito del controllo sul monitor" style="object-position:50% 40%" loading="lazy" width="1800" height="855" /></figure>
+
+  <section class="sec sec-feature tone-soft" aria-labelledby="p-t">
+    <div class="feature rev">
+      <figure class="feature-img" data-wipe><img src="/img/familiare-supporto.jpg" alt="Un giovane accompagna un familiare anziano durante la prova di un apparecchio" style="object-position:60% 50%" loading="lazy" width="1185" height="788" /></figure>
+      <div class="feature-text" data-stagger>
+        <h2 id="p-t">{C.portaTitolo}</h2>
+        <p class="lead">{C.porta}</p>
+        <p><a class="btn btn-primary" href={SITE.telefonoHref}><Icon name="phone" />Prenota per due</a></p>
+      </div>
+    </div>
+  </section>
+
+  <Section tone="tint" layout="split" title={C.faqTitolo}>
+    <Faq items={C.faq} one />
+  </Section>
+
+  <CtaBand titolo="Prenota il tuo controllo." testo="Una telefonata e ci mettiamo d’accordo sul giorno." />
+</Page>

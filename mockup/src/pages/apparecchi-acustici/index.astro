@@ -1,0 +1,75 @@
+---
+import Page from '../../layouts/Page.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Faq from '../../components/Faq.astro';
+import Icon from '../../components/Icon.astro';
+import { APP } from '../../copy/apparecchi';
+import { SITE, MARCHI } from '../../config';
+---
+<Page title={APP.title} description={APP.description} current="/apparecchi-acustici/">
+  <PageHero rev titolo={APP.h1} lead={APP.lead}
+    image="/img/senior-apparecchio.jpg" imageAlt="Un uomo con un apparecchio acustico durante una conversazione" imagePos="55% 40%">
+    <div class="btn-row">
+      <a class="btn btn-primary" href={SITE.telefonoHref}><Icon name="phone" />Chiamami</a>
+      <a class="btn btn-secondary" href="#tipi">I tipi di apparecchio</a>
+    </div>
+  </PageHero>
+
+  <Section tone="white" layout="split" id="scelta" title={APP.sceltaTitolo} lead={APP.sceltaLead}>
+    <ul class="big-rows" data-stagger>
+      {APP.criteri.map((c) => <li><div class="row"><h3>{c.titolo}</h3><p>{c.testo}</p></div></li>)}
+    </ul>
+  </Section>
+
+  <Section tone="soft" layout="wide" id="tipi" title={APP.tipiTitolo} lead={APP.tipiLead}>
+    <div class="cards c4" data-stagger>
+      {APP.tipi.map((c, i) => <div class="card"><span class="card-num">{i + 1}</span><h3>{c.titolo}</h3><p>{c.testo}</p></div>)}
+    </div>
+  </Section>
+
+  <section class="sec sec-feature tone-ink on-dark" aria-labelledby="prova-t">
+    <div class="feature rev">
+      <figure class="feature-img" data-wipe><img src="/img/prova-mani-custodia.jpg" alt="Un apparecchio acustico estratto dalla sua custodia" style="object-position:50% 50%" loading="lazy" width="1600" height="1066" /></figure>
+      <div class="feature-text" data-stagger>
+        <h2 id="prova-t">{APP.provaTitolo}</h2>
+        <p class="lead">{APP.provaTesto}</p>
+        <p><a class="btn btn-secondary" href="/chi-siamo/#metodo">{APP.provaLink}<Icon name="arrow" /></a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec tone-white" id="ssn" aria-labelledby="ssn-t">
+    <div class="container">
+      <div class="panel sky" data-reveal>
+        <div class="panel-text">
+          <h2 id="ssn-t">{APP.ssnTitolo}</h2>
+          <p class="lead">{APP.ssnTesto}</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-primary" href={SITE.telefonoHref}><Icon name="phone" />Chiamami</a>
+          <a class="btn btn-secondary" href="/contatti/?motivo=ssn#form">Scrivimi</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Section tone="tint" layout="center" title={APP.marchiTitolo} lead={APP.marchiTesto}>
+    <p class="brand-strip" aria-label="Marchi trattati" data-stagger>{MARCHI.map((m) => <span>{m}</span>)}</p>
+    <p class="note" style="text-align:center;margin:1.5rem auto 0">{APP.marchiNota}</p>
+  </Section>
+
+  <Section tone="white" layout="split" title={APP.prezziTitolo}>
+    <div class="prose">
+      <p class="lead">{APP.prezziTesto}</p>
+      <p><a class="btn btn-secondary" href="/apparecchi-acustici/prezzi/">{APP.prezziLink}<Icon name="arrow" /></a></p>
+    </div>
+  </Section>
+
+  <Section tone="soft" layout="center" title={APP.faqTitolo}>
+    <Faq items={APP.faq} />
+  </Section>
+
+  <CtaBand titolo="Proviamo insieme, senza impegno." testo="Prenota un controllo dell’udito: da lì capiamo cosa serve davvero." />
+</Page>

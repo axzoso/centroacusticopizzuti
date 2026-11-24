@@ -1,0 +1,12 @@
+---
+import Base from './Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+// Layout delle pagine interne: header, contenuto, footer. Il contenuto apre con <PageHero>.
+const { title, description, current = '' } = Astro.props;
+---
+<Base title={title} description={description} bodyClass="inner">
+  <Header slot="header" current={current} />
+  <slot />
+  <Footer slot="footer" />
+</Base>

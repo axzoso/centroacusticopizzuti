@@ -1,0 +1,50 @@
+---
+import BaseB from '../../../layouts/b/BaseB.astro';
+import PageHeaderBox from '../../../components/b/PageHeaderBox.astro';
+import PhotoCards from '../../../components/b/PhotoCards.astro';
+import SplitFeature from '../../../components/b/SplitFeature.astro';
+import ActionCards from '../../../components/b/ActionCards.astro';
+import Band from '../../../components/b/Band.astro';
+import IconB from '../../../components/b/IconB.astro';
+import { SERV } from '../../../copy/servizi';
+import { SITE } from '../../../config';
+
+const foto: Record<string, string[]> = {
+  'Controllo dell’udito': ['/img/visita-audiogramma.jpg', 'Il Dott. Pizzuti mostra un audiogramma durante una visita', '50% 40%'],
+  'Apparecchi acustici': ['/img/senior-apparecchio.jpg', 'Un uomo con un apparecchio acustico durante una conversazione', '55% 40%'],
+  'Riparazione e assistenza': ['/img/regolazione-orecchio.jpg', 'Regolazione di un apparecchio acustico sull’orecchio', '50% 40%'],
+  'Auricolari su misura': ['/img/auricolari-su-misura.jpg', 'Auricolari realizzati su misura', '50% 50%'],
+  'Contributi SSN': ['/img/b/nonno-nipote.jpg', 'Un nonno sorridente con il nipotino in braccio', '60% 35%'],
+};
+const righe = SERV.righe.map((r) => {
+  const [image, imageAlt, imagePos] = foto[r.titolo];
+  return { ...r, image, imageAlt, imagePos, cta: 'Scopri di più' };
+});
+const iconeUsi = ['shield', 'drop', 'moon', 'music'];
+---
+<BaseB title={`${SERV.title} · Proposta B`} description={SERV.description} current="/servizi/">
+  <PageHeaderBox titolo={SERV.h1} lead={SERV.lead} image="/img/familiare-supporto.jpg" imageAlt="Una persona accompagna un familiare" imagePos="50% 40%">
+    <a class="b-btn b-btn--red" href={SITE.telefonoHref}><IconB name="phone" />Chiamami</a>
+    <a class="b-btn b-btn--line-dark" href={SITE.whatsappHref}><IconB name="whatsapp" />WhatsApp</a>
+  </PageHeaderBox>
+
+  <section class="b-sec" aria-label="I servizi">
+    <div class="b-container">
+      <PhotoCards layout="bento" items={righe} />
+    </div>
+  </section>
+
+  <SplitFeature id="auricolari" tone="soft" titolo={SERV.auricolariTitolo} image="/img/auricolari-su-misura.jpg" imageAlt="Auricolari realizzati su misura dell’orecchio"
+    image2="/img/b/amici-risata.jpg" image2Alt="Due amici ridono insieme all’aperto" reverse>
+    {SERV.auricolari.map((p) => <p>{p}</p>)}
+    <div class="b-btn-row"><a class="b-btn b-btn--line-dark" href="/proposta-b/contatti/?motivo=auricolari#form" data-motivo="auricolari">Chiedimi informazioni<IconB name="arrow" class="b-arrow" /></a></div>
+  </SplitFeature>
+
+  <section class="b-sec b-sec--softflat" style="padding-top:0" aria-label="A cosa servono gli auricolari su misura">
+    <div class="b-container">
+      <ActionCards cols={4} items={SERV.auricolariUsi.map((u, i) => ({ ...u, icona: iconeUsi[i], href: '/contatti/?motivo=auricolari#form' }))} />
+    </div>
+  </section>
+
+  <Band tone="deep" testo={SERV.nonSaiTitolo} enfasi="da dove cominciare" sotto={SERV.nonSai} link={{ label: 'Prenota un controllo', href: '/servizi/controllo-udito/' }} />
+</BaseB>

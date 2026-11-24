@@ -1,0 +1,20 @@
+---
+// Card bianche con icona su quadratino colorato (rif. "Prenota un controllo / Trova il centro" AudioNova).
+// Con href vuoto la card non è un link.
+import { bHref } from '../../b/link';
+import IconB from './IconB.astro';
+const { items = [], cols = 3 } = Astro.props;
+---
+<div class:list={['b-acards', `b-cols-${cols}`]} data-stagger>
+  {items.map((c) => {
+    const Tag = c.href ? 'a' : 'div';
+    return (
+      <Tag class:list={['b-acard', { 'is-link': !!c.href }]} href={c.href ? bHref(c.href) : undefined}>
+        {c.icona && <span class="b-acard-ico"><IconB name={c.icona} /></span>}
+        <h3 class="b-h3">{c.titolo}</h3>
+        {c.testo && <p class="b-small">{c.testo}</p>}
+        {c.href && <span class="b-acard-arrow" aria-hidden="true"><IconB name="arrow" /></span>}
+      </Tag>
+    );
+  })}
+</div>

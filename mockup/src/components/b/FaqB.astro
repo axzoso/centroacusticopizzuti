@@ -1,0 +1,19 @@
+---
+import IconB from './IconB.astro';
+const { titolo, items = [] } = Astro.props;
+---
+<section class="b-sec b-faq" aria-labelledby="b-faq-t">
+  <div class="b-container b-faq-grid">
+    <div class="b-faq-head">
+      <h2 class="b-h2" id="b-faq-t">{titolo}</h2>
+    </div>
+    <div class="b-faq-list" data-stagger>
+      {items.map((f) => (
+        <details>
+          <summary><span>{f.q}</span><span class="b-faq-ico" aria-hidden="true"><IconB name="plus" /></span></summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

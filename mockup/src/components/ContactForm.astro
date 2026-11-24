@@ -1,0 +1,70 @@
+---
+// Form di contatto (mockup: non invia davvero, mostra la conferma).
+// Se la pagina passa ?motivo=... o un link ha data-motivo, il campo viene precompilato.
+const t = {
+  nome: 'Il tuo nome', tel: 'Numero di telefono', telHint: 'Ti richiamo io.', motivo: 'Come posso aiutarti?',
+  msg: 'Un messaggio, se vuoi', facolt: '(facoltativo)',
+  invia: 'Richiamami', note: 'Preferisci parlare subito? Chiamami o scrivimi su WhatsApp: è più veloce.',
+};
+// Chiave = valore del campo, usabile nei link: /contatti/?motivo=ssn#form oppure data-motivo="caro".
+const motivi = [
+  ['controllo', 'Vorrei prenotare un controllo dell’udito'],
+  ['caro', 'Cerco aiuto per una persona cara'],
+  ['assistenza', 'Ho già un apparecchio e mi serve assistenza'],
+  ['ssn', 'Vorrei informazioni sui contributi SSN'],
+  ['auricolari', 'Vorrei informazioni sugli auricolari su misura'],
+  ['preventivo', 'Vorrei un preventivo'],
+  ['altro', 'Altro'],
+];
+---
+<form class="form" id="contact-form" novalidate>
+  <div class="field">
+    <label for="f-nome">{t.nome}</label>
+    <input id="f-nome" name="nome" type="text" autocomplete="name" required />
+  </div>
+  <div class="field">
+    <label for="f-tel">{t.tel}</label>
+    <input id="f-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required />
+    <span class="hint">{t.telHint}</span>
+  </div>
+  <div class="field">
+    <label for="f-motivo">{t.motivo}</label>
+    <select id="f-motivo" name="motivo">
+      {motivi.map(([v, l]) => <option value={v}>{l}</option>)}
+    </select>
+  </div>
+  <div class="field">
+    <label for="f-msg">{t.msg} <span class="hint">{t.facolt}</span></label>
+    <textarea id="f-msg" name="messaggio"></textarea>
+  </div>
+  <label class="check">
+    <input type="checkbox" name="privacy" required />
+    <span>Ho letto l’<a href="/privacy-policy/" target="_blank" rel="noopener">informativa sulla privacy<span class="visually-hidden"> (si apre in una nuova scheda)</span></a> e acconsento al trattamento dei miei dati per essere ricontattato.</span>
+  </label>
+  <button class="btn btn-primary" type="submit">{t.invia}</button>
+  <p class="form-note">{t.note}</p>
+  <p class="form-sent" id="form-sent" role="status" hidden>Grazie! Ti richiamo appena posso. (Mockup: sul sito vero la richiesta arriva al Centro.)</p>
+</form>
+
+<script is:inline>
+  (function () {
+    var f = document.getElementById('contact-form');
+    if (!f) return;
+    var sel = document.getElementById('f-motivo');
+    function applyMotivo(m) {
+      if (!m || !sel) return;
+      for (var i = 0; i < sel.options.length; i++) if (sel.options[i].value === m) sel.selectedIndex = i;
+    }
+    var q = new URLSearchParams(location.search).get('motivo');
+    applyMotivo(q);
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('[data-motivo]');
+      if (a) applyMotivo(a.getAttribute('data-motivo'));
+    });
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!f.reportValidity()) return;
+      document.getElementById('form-sent').hidden = false;
+    });
+  })();
+</script>

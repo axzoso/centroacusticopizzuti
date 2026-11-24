@@ -1,0 +1,50 @@
+---
+import Page from '../../layouts/Page.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Icon from '../../components/Icon.astro';
+import { SERV } from '../../copy/servizi';
+const icoUsi = ['shield', 'drop', 'moon', 'music'];
+---
+<Page title={SERV.title} description={SERV.description} current="/servizi/">
+  <PageHero titolo={SERV.h1} lead={SERV.lead} image="/img/familiare-supporto.jpg" imageAlt="Una persona accompagna un familiare" imagePos="70% 40%" />
+
+  <Section tone="white" layout="wide" id="elenco" title="Cosa trovi qui">
+    <div class="cards c3" data-stagger>
+      {SERV.righe.map((v, i) => <a class:list={['card', { 'hero-card span2': i === 0 }]} href={v.href}><h3>{v.titolo}</h3><p>{v.testo}</p></a>)}
+    </div>
+  </Section>
+
+  <section class="sec sec-feature tone-blue on-dark" id="auricolari" aria-labelledby="aur-t">
+    <div class="feature">
+      <figure class="feature-img" data-wipe><img src="/img/auricolari-su-misura.jpg" alt="Due auricolari su misura, uno blu e uno rosso" loading="lazy" width="1000" height="1000" /></figure>
+      <div class="feature-text" data-stagger>
+        <h2 id="aur-t">{SERV.auricolariTitolo}</h2>
+        <p class="lead">{SERV.auricolari[0]}</p>
+        <p>{SERV.auricolari[1]}</p>
+        <p><a class="btn btn-primary" href="/contatti/?motivo=auricolari#form"><Icon name="phone" />Chiedimi informazioni</a></p>
+      </div>
+    </div>
+  </section>
+
+  <Section tone="soft" layout="center" title="Per cosa puoi usarli">
+    <div class="tiles" data-stagger>
+      {SERV.auricolariUsi.map((u, i) => <div class="tile"><span class="tile-ico"><Icon name={['shield', 'drop', 'moon', 'music'][i]} /></span><h3>{u.titolo}</h3><p>{u.testo}</p></div>)}
+    </div>
+  </Section>
+
+  <section class="sec tone-tint" aria-labelledby="ns-t">
+    <div class="container">
+      <div class="panel sky" data-reveal>
+        <div class="panel-text">
+          <h2 id="ns-t">{SERV.nonSaiTitolo}</h2>
+          <p class="lead">{SERV.nonSai}</p>
+        </div>
+        <div class="btn-row"><a class="btn btn-primary" href="/servizi/controllo-udito/">Il controllo dell’udito<Icon name="arrow" /></a></div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Page>

@@ -1,0 +1,35 @@
+---
+import BaseB from '../../../../layouts/b/BaseB.astro';
+import PageHeaderBox from '../../../../components/b/PageHeaderBox.astro';
+import RowList from '../../../../components/b/RowList.astro';
+import SplitFeature from '../../../../components/b/SplitFeature.astro';
+import Band from '../../../../components/b/Band.astro';
+import FaqB from '../../../../components/b/FaqB.astro';
+import IconB from '../../../../components/b/IconB.astro';
+import { RIPARA } from '../../../../copy/servizi';
+import { SITE } from '../../../../config';
+
+---
+<BaseB title={`${RIPARA.title} · Proposta B`} description={RIPARA.description} current="/servizi/">
+  <PageHeaderBox titolo={RIPARA.h1} lead={RIPARA.lead} image="/img/regolazione-orecchio.jpg" imageAlt="Regolazione di un apparecchio acustico sull’orecchio" imagePos="50% 45%">
+    <a class="b-btn b-btn--red" href={SITE.telefonoHref}><IconB name="phone" />Chiamami</a>
+    <a class="b-btn b-btn--line-dark" href={SITE.whatsappHref}><IconB name="whatsapp" />WhatsApp</a>
+  </PageHeaderBox>
+
+  <SplitFeature titolo={RIPARA.casiTitolo} punti={RIPARA.casi} image="/img/b/telefono-sorriso.jpg" imageAlt="Una signora sorridente al telefono" imagePos="60% 35%">
+    <div class="b-btn-row"><a class="b-btn b-btn--red" href={SITE.telefonoHref}><IconB name="phone" />Chiamami</a></div>
+  </SplitFeature>
+
+  <section class="b-sec b-sec--softflat" aria-labelledby="fa-t">
+    <div class="b-container">
+      <div class="b-sec-head"><h2 class="b-h2" id="fa-t">{RIPARA.serviziTitolo}</h2></div>
+      <RowList cols={2} items={RIPARA.servizi} />
+    </div>
+  </section>
+
+  <Band tone="deep" testo={RIPARA.altroTitolo} enfasi="non l’hai comprato da me" sotto={RIPARA.altro} link={{ label: 'Scrivimi', href: '/contatti/?motivo=assistenza#form' }} />
+
+  <FaqB titolo={RIPARA.faqTitolo} items={RIPARA.faq} />
+
+  <Band tone="red" testo="Qualcosa non va? Chiamami." enfasi="Chiamami" sotto={`${SITE.telefonoVisibile} · ${SITE.orari[0].giorni} ${SITE.orari[0].ore}`} link={{ label: 'Chiama ora', href: SITE.telefonoHref }} />
+</BaseB>

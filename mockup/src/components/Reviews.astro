@@ -1,0 +1,21 @@
+---
+import { SHOW_REVIEWS, RECENSIONI } from '../config';
+const { titolo = 'Cosa dicono di noi' } = Astro.props;
+---
+{SHOW_REVIEWS && (
+  <section class="sec tone-soft" id="recensioni" aria-labelledby="rec-t">
+    <div class="container">
+      <h2 id="rec-t" data-reveal>{titolo}</h2>
+      
+      <div class="reviews-grid" data-stagger>
+        {RECENSIONI.map((r) => (
+          <figure class="review">
+            <blockquote>«{r.testo}»</blockquote>
+            <figcaption>{r.nome}, {r.luogo}</figcaption>
+          </figure>
+        ))}
+        <figure class="review review-badge"><img src="/img/badge-google.png" width="422" height="124" alt="Valutazione Google 5.0 su 5" loading="lazy" /><figcaption>Valutazione dei pazienti su Google</figcaption></figure>
+      </div>
+    </div>
+  </section>
+)}

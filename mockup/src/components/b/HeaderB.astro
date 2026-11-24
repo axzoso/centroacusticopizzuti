@@ -1,0 +1,37 @@
+---
+import { SITE, NAV } from '../../config';
+import { bHref } from '../../b/link';
+import IconB from './IconB.astro';
+const { current = '' } = Astro.props;
+const voci = [{ label: 'Home', href: '/' }, ...NAV];
+---
+<header class="b-header" id="b-header">
+  <div class="b-container">
+    <a class="b-brand" href={bHref('/')} aria-label={`${SITE.nome}, home`}><img src="/logos/logo-color.png" alt={SITE.nome} width="1418" height="741" /></a>
+    <nav class="b-nav" aria-label="Principale">
+      {NAV.map((v) => <a href={bHref(v.href)} aria-current={current === v.href ? 'page' : undefined}>{v.label}</a>)}
+    </nav>
+    <a class="b-btn b-btn--red b-header-cta" href={SITE.telefonoHref}><IconB name="phone" />Chiamami</a>
+    <button class="b-menu-btn" type="button" aria-expanded="false" aria-controls="b-mnav">
+      <IconB name="menu" class="i-menu" /><IconB name="close" class="i-close" />Menu
+    </button>
+  </div>
+  <nav class="b-mnav" id="b-mnav" aria-label="Principale (mobile)">
+    {voci.map((v) => <a href={bHref(v.href)} aria-current={current === v.href ? 'page' : undefined}>{v.label}</a>)}
+    <a class="b-btn b-btn--red" href={SITE.telefonoHref}><IconB name="phone" />Chiamami · {SITE.telefonoVisibile}</a>
+  </nav>
+</header>
+<script is:inline>
+  (function () {
+    var h = document.getElementById('b-header');
+    if (!h) return;
+    var b = h.querySelector('.b-menu-btn');
+    b.addEventListener('click', function () {
+      var open = h.classList.toggle('is-open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    var onScroll = function () { h.classList.toggle('is-stuck', window.scrollY > 40); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>

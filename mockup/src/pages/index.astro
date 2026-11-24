@@ -1,0 +1,164 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Reviews from '../components/Reviews.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../config';
+import { COPY } from '../copy/home';
+---
+<Base title="Centro Acustico Pizzuti · Cosenza" bodyClass="home">
+  <Header slot="header" />
+
+  <!-- 1. Il volto: il Dottore nel suo studio, foto a tutto fondo -->
+  <section class="ph-hero ph-photo rev tone-ink on-dark home-hero">
+    <figure class="ph-bg"><img src="/img/studio-ufficio.jpg" width="1414" height="801" alt="Il Dott. Pasqualino Pizzuti alla scrivania del suo studio" style="object-position:20% 40%" fetchpriority="high" /></figure>
+    <div class="container">
+      <div class="ph-text home-hero-text">
+        <h1 class="rise rise-2">{COPY.h1}</h1>
+        <p class="lead rise rise-3">{COPY.lead}</p>
+        <div class="btn-row rise rise-3">
+          <a class="btn btn-primary" href={SITE.telefonoHref}><Icon name="phone" />{COPY.chiama}</a>
+          <a class="btn btn-secondary" href={SITE.whatsappHref}><Icon name="whatsapp" />{COPY.whatsapp}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Citazione -->
+  <section class="home-quote" aria-label="Il Dottore">
+    <div class="container">
+      <figure>
+        <blockquote>{COPY.citazione}</blockquote>
+        <figcaption>{COPY.citazioneFirma}</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 3. Il metodo: immagine a sinistra, passi a destra -->
+  <section class="sec tone-tint home-metodo" id="metodo" aria-labelledby="metodo-t">
+    <div class="container home-metodo-grid">
+      <figure class="home-metodo-img">
+        <img src="/img/regolazione-orecchio.jpg" width="888" height="889" alt="Regolazione di un apparecchio acustico durante una visita" loading="lazy" />
+      </figure>
+      <div class="home-metodo-text">
+        <h2 id="metodo-t">{COPY.metodoTitolo}</h2>
+        <p class="lead">{COPY.metodoLead}</p>
+        <ol class="method-list home-path">
+          {COPY.metodo.map((p) => <li><h3>{p.titolo}</h3><p>{p.testo}</p></li>)}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Servizi: box cliccabili -->
+  <section class="sec tone-white" id="servizi" aria-labelledby="serv-t">
+    <div class="container">
+      <div class="sec-head" data-reveal style="margin-bottom:clamp(2.5rem,5vw,4rem)">
+        <h2 id="serv-t">{COPY.serviziTitolo}</h2>
+      </div>
+      <div class="cards c3" data-stagger>
+        {COPY.servizi.map((s, i) => <a class:list={['card', { 'hero-card span2': i === 0 }]} href={s.href}><h3>{s.titolo}</h3><p>{s.testo}</p></a>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. I plus: tessere ad arco, in orizzontale -->
+  <section class="sec tone-blue on-dark" aria-labelledby="plus-t">
+    <div class="container">
+      <div class="sec-head" data-reveal style="margin-bottom:clamp(2.5rem,5vw,4rem);text-align:center;justify-items:center;margin-inline:auto;max-width:44rem">
+        <h2 id="plus-t">{COPY.plusTitolo}</h2>
+        <p class="lead">{COPY.plusLead}</p>
+      </div>
+      <div class="tiles" data-stagger>
+        {COPY.plus.map((p) => <div class="tile"><span class="tile-ico"><Icon name={p.icona} /></span><h3>{p.titolo}</h3><p>{p.testo}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <Reviews />
+
+  <!-- 7. Una persona cara: pannello -->
+  <section class="sec tone-white" aria-labelledby="fam-t">
+    <div class="container">
+      <div class="panel sky" data-reveal>
+        <div class="panel-text">
+          <h2 id="fam-t">{COPY.caroTitolo}</h2>
+          <p class="lead">{COPY.caroLead}</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-primary" href={SITE.telefonoHref}><Icon name="phone" />{COPY.chiama}</a>
+          <a class="btn btn-secondary" href="#contatti" data-motivo={COPY.caroMotivo}><Icon name="users" />{COPY.caroBtn}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Contatti -->
+  <section class="home-contact on-dark" id="contatti" aria-labelledby="cont-t">
+    <div class="container home-contact-grid">
+      <div class="home-contact-text">
+        <h2 id="cont-t">{COPY.contattiTitolo}</h2>
+        <p class="lead">{COPY.contattiLead}</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href={SITE.telefonoHref}><Icon name="phone" />{SITE.telefonoVisibile}</a>
+          <a class="btn btn-secondary" href={SITE.whatsappHref}><Icon name="whatsapp" />WhatsApp</a>
+        </div>
+        <ul class="home-where">
+          <li><Icon name="pin" />{SITE.indirizzo}</li>
+          <li><Icon name="clock" /><span>{SITE.orari.map((o) => `${o.giorni}: ${o.ore}`).join(" · ")}</span></li>
+        </ul>
+        <img class="home-map" src="/img/vetrina-centro.jpg" width="1283" height="900" alt="L’ingresso del Centro Acustico Pizzuti, con il Dott. Pizzuti sulla porta" loading="lazy" />
+      </div>
+      <div class="home-formbox">
+        <h3>{COPY.formTitolo}</h3>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style is:global>
+  .home { --bg: var(--paper); --line: color-mix(in srgb, var(--blue) 28%, transparent); }
+
+  .home .home-hero h1 { font-size: clamp(2.5rem, 1.3rem + 3.9vw, 4.75rem); letter-spacing: -0.035em; max-width: 15ch; }
+
+  .home .home-quote { background: var(--sky); color: var(--ink); padding-block: clamp(3rem, 7vw, 5.5rem); }
+  .home .home-quote blockquote { margin: 0; max-width: 20ch; font-size: clamp(1.9rem, 1.2rem + 3.2vw, 3.75rem); line-height: 1.15; font-weight: 700; letter-spacing: -0.03em; text-wrap: balance; }
+  .home .home-quote figcaption { margin-top: 1.5rem; color: var(--blue-text); font-weight: 600; font-size: var(--step--1); }
+
+  .home .home-metodo-grid { display: grid; gap: 2.5rem; align-items: start; }
+  .home .home-metodo-img { margin: 0; }
+  .home .home-metodo-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 35% 40%; border-radius: var(--radius); background: var(--sky); }
+  .home .home-metodo-text { display: grid; gap: 1.25rem; }
+  @media (min-width: 960px) {
+    .home .home-metodo-grid { grid-template-columns: 5fr 6fr; gap: 5rem; }
+    .home .home-metodo-img { position: sticky; top: 2rem; }
+    .home .home-metodo-img img { aspect-ratio: 4 / 5; }
+  }
+  .home .home-path { position: relative; margin-top: 1rem; }
+  .home .home-path li { border: 0; padding-block: 1.25rem 1.5rem; position: relative; }
+  .home .home-path li:last-child { border: 0; }
+  .home .home-path li:not(:last-child)::after { content: ''; position: absolute; left: 1.7rem; top: 4.75rem; bottom: -.75rem; width: 3px; background: var(--sky); }
+  .home .home-path li::before { background: var(--red); }
+  .home .home-path li:last-child::before { background: var(--ink); }
+
+
+
+  .home .home-contact { background: var(--ink); color: #fff; padding-block: var(--space-section); }
+  .home .home-contact h2, .home .home-contact h3 { color: #fff; }
+  .home .home-contact .lead { color: var(--sky); }
+  .home .home-contact-grid { display: grid; gap: 3rem; }
+  @media (min-width: 960px) { .home .home-contact-grid { grid-template-columns: 1fr 1fr; gap: 5rem; } }
+  .home .home-contact-text { display: grid; gap: 1.5rem; align-content: start; }
+  .home .home-where { display: grid; gap: .75rem; font-weight: 600; }
+  .home .home-where li { display: flex; gap: .75rem; align-items: center; }
+  .home .home-where svg { width: 1.5rem; height: 1.5rem; flex: none; color: var(--sky); }
+  .home .home-map { height: auto; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: 70% 40%; border-radius: var(--radius); }
+  .home .home-formbox { display: grid; gap: 1.5rem; align-content: start; padding: clamp(1.5rem, 4vw, 2.5rem); border-radius: var(--radius); background: #fff; color: var(--ink); }
+  .home .home-formbox h3 { color: var(--ink); }
+  .home .home-formbox .btn-primary { color: #fff; }
+</style>

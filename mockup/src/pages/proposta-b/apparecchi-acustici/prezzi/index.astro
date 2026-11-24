@@ -1,0 +1,50 @@
+---
+import BaseB from '../../../../layouts/b/BaseB.astro';
+import PageHeaderBox from '../../../../components/b/PageHeaderBox.astro';
+import SplitFeature from '../../../../components/b/SplitFeature.astro';
+import RowList from '../../../../components/b/RowList.astro';
+import Band from '../../../../components/b/Band.astro';
+import FaqB from '../../../../components/b/FaqB.astro';
+import IconB from '../../../../components/b/IconB.astro';
+import { bHref } from '../../../../b/link';
+import { PREZ } from '../../../../copy/prezzi';
+import { SITE } from '../../../../config';
+
+---
+<BaseB title={`${PREZ.title} · Proposta B`} description={PREZ.description} current="/apparecchi-acustici/">
+  <PageHeaderBox titolo={PREZ.h1} lead={PREZ.lead} note={PREZ.esempioNota} image="/img/apparecchi-quaderno-rosso.jpg" imageAlt="Apparecchi acustici appoggiati su un quaderno" imagePos="50% 50%">
+    <a class="b-btn b-btn--red" href={SITE.telefonoHref}><IconB name="phone" />Chiamami</a>
+    <a class="b-btn b-btn--line-dark" href={bHref('/contatti/?motivo=preventivo#form')}>Chiedi un preventivo<IconB name="arrow" class="b-arrow" /></a>
+  </PageHeaderBox>
+
+  <section class="b-sec" aria-labelledby="incide-t">
+    <div class="b-container">
+      <div class="b-sec-head"><h2 class="b-h2" id="incide-t">{PREZ.incideTitolo}</h2></div>
+      <RowList cols={2} numbered items={PREZ.incide} />
+    </div>
+  </section>
+
+  <SplitFeature tone="soft" titolo={PREZ.inclusoTitolo} punti={PREZ.incluso} image="/img/visita-audiogramma.jpg" imageAlt="Il Dott. Pizzuti spiega i risultati di un controllo dell’udito" reverse />
+
+  <section class="b-sec" aria-labelledby="fasce-t">
+    <div class="b-container">
+      <div class="b-sec-head"><h2 class="b-h2" id="fasce-t">{PREZ.fasceTitolo}</h2></div>
+      <div class="b-fasce" data-stagger>
+        {PREZ.fasce.map((f) => (
+          <div class="b-fascia">
+            <span class="b-acard-ico"><IconB name="euro" /></span>
+            <h3 class="b-h3">{f.titolo}</h3>
+            <p class="b-small">{f.testo}</p>
+          </div>
+        ))}
+      </div>
+      <p class="b-note" style="margin-top:1.25rem">{PREZ.esempioNota}</p>
+    </div>
+  </section>
+
+  <Band tone="deep" testo={PREZ.preventivoTitolo} enfasi="preventivo chiaro" sotto={`${PREZ.preventivo} ${PREZ.ssn}`} link={{ label: 'Chiedi un preventivo', href: '/contatti/?motivo=preventivo#form' }} />
+
+  <FaqB titolo={PREZ.faqTitolo} items={PREZ.faq} />
+
+  <Band tone="red" testo="Ne parliamo prima, con calma." enfasi="prima" sotto="Una telefonata e ti spiego tutto, senza impegno." link={{ label: 'Chiamami', href: SITE.telefonoHref }} />
+</BaseB>

@@ -1,0 +1,18 @@
+---
+import { SITE } from '../config';
+import Icon from './Icon.astro';
+const { titolo = 'Parliamone di persona.', testo = 'Una telefonata è il modo più semplice per cominciare. Rispondo io.', contatti = true } = Astro.props;
+---
+<section class="cta-band on-dark" aria-labelledby="cta-t">
+  <div class="container cta-grid">
+    <div>
+      <h2 id="cta-t">{titolo}</h2>
+      <p class="lead">{testo}</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href={SITE.telefonoHref}><Icon name="phone" />Chiamami<span class="cta-num"> · {SITE.telefonoVisibile}</span></a>
+      <a class="btn btn-secondary" href={SITE.whatsappHref}><Icon name="whatsapp" />Scrivimi su WhatsApp</a>
+      {contatti && <a class="btn btn-secondary" href="/contatti/"><Icon name="pin" />Come raggiungerci</a>}
+    </div>
+  </div>
+</section>

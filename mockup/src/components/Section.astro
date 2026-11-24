@@ -1,0 +1,17 @@
+---
+// Sezione generica. tone: white|soft|tint|sky|blue|ink. layout: split|center|wide|free.
+const { tone = 'white', layout = 'split', id, title, lead, class: cls = '' } = Astro.props;
+const dark = tone === 'blue' || tone === 'ink';
+const hid = id ? `${id}-t` : undefined;
+---
+<section id={id} aria-labelledby={title ? hid : undefined} class:list={['sec', `tone-${tone}`, `sec-${layout}`, { 'on-dark': dark }, cls]}>
+  <div class="container">
+    {title && (
+      <div class="sec-head" data-reveal>
+        <h2 id={hid}>{title}</h2>
+        {lead && <p class="lead">{lead}</p>}
+      </div>
+    )}
+    {layout === 'split' || layout === 'free' ? <div class="sec-body"><slot /></div> : <slot />}
+  </div>
+</section>

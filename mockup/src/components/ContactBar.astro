@@ -1,0 +1,8 @@
+---
+import { SITE } from '../config';
+import Icon from './Icon.astro';
+---
+<div class="contact-bar" role="region" aria-label="Contatti rapidi">
+  <a class="btn btn-primary" href={SITE.telefonoHref}><Icon name="phone" />Chiama</a>
+  <a class="btn btn-wa" href={SITE.whatsappHref}><Icon name="whatsapp" />WhatsApp</a>
+</div>

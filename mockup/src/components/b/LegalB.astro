@@ -1,0 +1,26 @@
+---
+// Pagina legale della Proposta B: stesse props di LegalPage.astro.
+import BaseB from '../../layouts/b/BaseB.astro';
+import LegalHeader from './LegalHeader.astro';
+const { title, description, h1, aggiornato, sezioni = [] } = Astro.props;
+---
+<BaseB title={title} description={description}>
+  <LegalHeader titolo={h1} aggiornato={aggiornato} />
+  <section class="b-sec b-legal">
+    <div class="b-container b-legal-grid">
+      <nav class="b-legal-toc" aria-label="Indice della pagina">
+        <p class="b-small"><strong>In questa pagina</strong></p>
+        <ol>{sezioni.map((s, i) => <li><a href={`#s${i + 1}`}>{s.titolo}</a></li>)}</ol>
+      </nav>
+      <div class="b-legal-text">
+        <p class="b-legal-draft" role="note"><strong>Bozza di esempio.</strong> Questo testo è un modello da far verificare da un consulente legale o dal DPO prima della pubblicazione. I dati del titolare sono segnaposto.</p>
+        {sezioni.map((s, i) => (
+          <section id={`s${i + 1}`}>
+            <h2 class="b-h3">{s.titolo}</h2>
+            {s.testo.map((t) => (Array.isArray(t) ? <ul>{t.map((li) => <li>{li}</li>)}</ul> : <p>{t}</p>))}
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseB>

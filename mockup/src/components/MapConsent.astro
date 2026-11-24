@@ -1,0 +1,28 @@
+---
+// Mappa Google caricata solo su richiesta (Google usa cookie di terze parti).
+// In WordPress lo stesso comportamento lo darà il plugin di consenso cookie.
+import { SITE } from '../config';
+import Icon from './Icon.astro';
+const q = encodeURIComponent(SITE.mappaQuery);
+const { class: cls = '' } = Astro.props;
+---
+<div class:list={['map-consent', cls]} data-src={`https://maps.google.com/maps?q=${q}&z=16&output=embed`}>
+  <div class="map-consent-box">
+    <Icon name="pin" />
+    <p><strong>Mappa di Google Maps</strong><br />Si carica solo se lo scegli: Google può usare cookie propri. Vedi la <a href="/cookie-policy/">Cookie Policy</a>.</p>
+    <div class="btn-row">
+      <button type="button" class="btn btn-secondary map-consent-load">Mostra la mappa</button>
+      <a class="btn btn-secondary" href={`https://www.google.com/maps/search/?api=1&query=${q}`} target="_blank" rel="noopener">Apri in Google Maps<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+    </div>
+  </div>
+</div>
+<script is:inline>
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.map-consent-load');
+    if (!b) return;
+    var w = b.closest('.map-consent');
+    var f = document.createElement('iframe');
+    f.src = w.getAttribute('data-src'); f.title = 'Mappa: come raggiungere il Centro Acustico Pizzuti'; f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade';
+    w.innerHTML = ''; w.appendChild(f); f.focus();
+  });
+</script>

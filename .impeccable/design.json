@@ -1,0 +1,417 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-24T11:29:39Z",
+  "title": "Design System: Centro Acustico Pizzuti",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "Blu del logo",
+        "canonical": "oklch(42.2% 0.051 254)",
+        "tonalRamp": [
+          "#050c15",
+          "#1a2634",
+          "#344357",
+          "#4f637c",
+          "#6f849e",
+          "#95a7be",
+          "#bccbde",
+          "#e4f0fe"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Inchiostro profondo",
+        "canonical": "oklch(21.5% 0.041 254)",
+        "tonalRamp": [
+          "#060c13",
+          "#1d2631",
+          "#364353",
+          "#526377",
+          "#738499",
+          "#98a7b9",
+          "#becada",
+          "#e6effb"
+        ]
+      },
+      "sky": {
+        "role": "secondary",
+        "displayName": "Azzurro luce",
+        "canonical": "oklch(83.2% 0.043 255)",
+        "tonalRamp": [
+          "#060c13",
+          "#1d2632",
+          "#364353",
+          "#526378",
+          "#73849a",
+          "#98a6ba",
+          "#becada",
+          "#e6effc"
+        ]
+      },
+      "sky-soft": {
+        "role": "secondary",
+        "displayName": "Azzurro tenue",
+        "canonical": "oklch(94.4% 0.015 257)",
+        "tonalRamp": [
+          "#090b0e",
+          "#22252a",
+          "#3e4248",
+          "#5c6269",
+          "#7d838b",
+          "#a0a5ad",
+          "#c5c9cf",
+          "#ebeff3"
+        ]
+      },
+      "red": {
+        "role": "tertiary",
+        "displayName": "Rosso contatto",
+        "canonical": "oklch(57.3% 0.222 24)",
+        "tonalRamp": [
+          "#290000",
+          "#550000",
+          "#860008",
+          "#ba001c",
+          "#e33a3f",
+          "#fe736e",
+          "#ffa59d",
+          "#ffd4cd"
+        ]
+      },
+      "red-deep": {
+        "role": "tertiary",
+        "displayName": "Rosso profondo",
+        "canonical": "oklch(50.0% 0.196 25)",
+        "tonalRamp": [
+          "#260000",
+          "#510001",
+          "#7f0511",
+          "#b11f25",
+          "#d94a46",
+          "#f57c73",
+          "#ffaaa1",
+          "#ffd8d0"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Carta",
+        "canonical": "oklch(100.0% 0.000 90)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "paper-tint": {
+        "role": "neutral",
+        "displayName": "Azzurro carta",
+        "canonical": "oklch(97.3% 0.006 255)",
+        "tonalRamp": [
+          "#0b0e14",
+          "#2c2f35",
+          "#4d5056",
+          "#6e7177",
+          "#909398",
+          "#b1b4b9",
+          "#d2d5da",
+          "#f3f6fb"
+        ]
+      },
+      "blue-text": {
+        "role": "neutral",
+        "displayName": "Blu testo",
+        "canonical": "oklch(39.4% 0.047 251)",
+        "tonalRamp": [
+          "#050c14",
+          "#1b2633",
+          "#344455",
+          "#4f637a",
+          "#6f859c",
+          "#95a7bc",
+          "#bccbdc",
+          "#e4f0fd"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (h1)",
+        "purpose": "h1, --step-4. Le testate la ridefiniscono localmente con tracking -0.035em (home fino a 4.75rem, pagine interne fino a 4.5rem)."
+      },
+      "headline": {
+        "displayName": "Headline (h2)",
+        "purpose": "h2, --step-3: titoli di sezione."
+      },
+      "title": {
+        "displayName": "Title (h3)",
+        "purpose": "h3, --step-1, tracking -0.02em: righe servizio e metodo, box, tessere."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Testo corrente, --step-0 (20px+), misura massima 62ch."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Sottotitolo sotto l'h1, colore fg-soft (blue-text, sky su fondi scuri)."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "--step--1: navigazione, note, didascalie, footer. Mai testo corrente."
+      }
+    },
+    "shadows": [
+      {
+        "name": "none",
+        "value": "none",
+        "purpose": "Sistema piatto: la profondita arriva da campi pieni, filetti e bordi 2-3px."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-state",
+        "value": ".18s ease-out",
+        "purpose": "Cambio di fondo, colore e bordo di bottoni, link e pillole."
+      },
+      {
+        "name": "faq-toggle",
+        "value": "transform .2s ease-out",
+        "purpose": "Icona piu della FAQ che ruota di 45 gradi all'apertura."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Curva comune di ingresso, comparsa e sollevamento."
+      },
+      {
+        "name": "rise",
+        "value": "rise .7s cubic-bezier(.16, 1, .3, 1) both",
+        "purpose": "Ingresso unico delle testate: da 14px sotto e opacita 0; ritardi .12s e .24s (rise-2, rise-3)."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity .9s, transform .9s cubic-bezier(.16, 1, .3, 1); delay calc(var(--i) * 110ms)",
+        "purpose": "Comparsa allo scroll (data-reveal, data-stagger sui figli) da 32px sotto, sfalsata di 110ms."
+      },
+      {
+        "name": "wipe",
+        "value": "clip-path 1.2s cubic-bezier(.65, 0, .35, 1), transform 1.6s cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Svelatura da sinistra delle foto grandi (data-wipe), con scala da 1.12 a 1."
+      },
+      {
+        "name": "card-lift",
+        "value": "transform .3s cubic-bezier(.16, 1, .3, 1), border-color .2s",
+        "purpose": "Solo a.card: sale di 6px con bordo ink, la freccia avanza di 4px. Senza ombra."
+      },
+      {
+        "name": "steps-line",
+        "value": "border-color .6s .2s",
+        "purpose": "Il filetto da 3px dei passi orizzontali compare dopo il testo."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation: none; transition: none",
+        "purpose": "Con prefers-reduced-motion: reduce tutto e disattivato, scroll non smooth."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-max",
+        "value": "599px"
+      },
+      {
+        "name": "two-up",
+        "value": "699px"
+      },
+      {
+        "name": "reviews",
+        "value": "800px"
+      },
+      {
+        "name": "rows",
+        "value": "860px"
+      },
+      {
+        "name": "desktop",
+        "value": "900px"
+      },
+      {
+        "name": "wide-grid",
+        "value": "960px"
+      },
+      {
+        "name": "grid-3-4",
+        "value": "1000px"
+      },
+      {
+        "name": "footer-5col",
+        "value": "1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Bottone primario",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Azione di contatto (Chiama, CTA telefono in header). Pillola rossa, hover red-deep.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z\"/></svg>Chiama</a>",
+      "css": ".ds-btn-primary, .ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; min-height: 3.75rem; padding: .9rem 1.6rem; font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); font-size: var(--step-0, 1.25rem); font-weight: 700; line-height: 1.2; text-decoration: none; cursor: pointer; border: 3px solid transparent; border-radius: 999px; transition: background-color .18s ease-out, color .18s ease-out, border-color .18s ease-out; } .ds-btn-primary svg, .ds-btn-secondary svg { width: 1.5rem; height: 1.5rem; flex: none; } .ds-btn-primary { background: var(--red, #dd182d); color: #fff; } .ds-btn-primary:hover { background: var(--red-deep, #b9101f); } .ds-btn-primary:focus-visible, .ds-btn-secondary:focus-visible { outline: 3px solid var(--ink, #0b1a2c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Bottone secondario",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Azione alternativa (WhatsApp, link): contorno ink 3px; su fondo scuro invertito in bianco.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">WhatsApp</a>",
+      "css": ".ds-btn-primary, .ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; min-height: 3.75rem; padding: .9rem 1.6rem; font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); font-size: var(--step-0, 1.25rem); font-weight: 700; line-height: 1.2; text-decoration: none; cursor: pointer; border: 3px solid transparent; border-radius: 999px; transition: background-color .18s ease-out, color .18s ease-out, border-color .18s ease-out; } .ds-btn-primary svg, .ds-btn-secondary svg { width: 1.5rem; height: 1.5rem; flex: none; } .ds-btn-secondary { background: transparent; color: var(--ink, #0b1a2c); border-color: var(--ink, #0b1a2c); } .ds-btn-secondary:hover { background: var(--ink, #0b1a2c); color: #fff; } .ds-btn-primary:focus-visible, .ds-btn-secondary:focus-visible { outline: 3px solid var(--ink, #0b1a2c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Campo form",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Campo alto 3.75rem, fondo bianco, bordo 2px blue, raggio radius-sm, etichetta 700.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-tel\">Telefono</label><input id=\"ds-tel\" type=\"tel\" /></div>",
+      "css": ".ds-field { display: grid; gap: .5rem; font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); color: var(--ink, #0b1a2c); } .ds-field label { font-weight: 700; font-size: var(--step-0, 1.25rem); } .ds-field input { font: inherit; font-size: var(--step-0, 1.25rem); width: 100%; min-height: 3.75rem; padding: .85rem 1.1rem; color: var(--ink, #0b1a2c); background: #fff; border: 2px solid var(--blue, #3a4f69); border-radius: var(--radius-sm, .875rem); } .ds-field input:focus-visible { outline: 3px solid var(--ink, #0b1a2c); outline-offset: 2px; }"
+    },
+    {
+      "name": "Box del form",
+      "kind": "custom",
+      "refersTo": "panel",
+      "description": "Contenitore del form su fondo ink (Contatti, home): bianco, raggio radius, padding fluido; testo secondario blue-text.",
+      "html": "<div class=\"ds-formbox-bg\"><div class=\"ds-formbox\"><h3>Le richiamo io</h3><p>Lasci il numero: la richiamo in giornata.</p></div></div>",
+      "css": ".ds-formbox-bg { background: var(--ink, #0b1a2c); padding: 2rem; font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); } .ds-formbox { display: grid; gap: 1rem; max-width: 32rem; padding: clamp(1.5rem, 4vw, 2.5rem); border-radius: var(--radius, 1.25rem); background: #fff; color: var(--ink, #0b1a2c); } .ds-formbox h3 { margin: 0; font-size: var(--step-1, 1.5rem); line-height: 1.25; letter-spacing: -.02em; } .ds-formbox p { margin: 0; color: var(--blue-text, #33485f); font-size: var(--step-0, 1.25rem); }"
+    },
+    {
+      "name": "Navigazione header",
+      "kind": "nav",
+      "refersTo": "typography.label",
+      "description": "Voci 600 a step--1; hover filetto blue 3px, pagina corrente filetto ink. Il rosso resta solo sulla CTA telefono.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Il Centro</a><a href=\"#\">Apparecchi acustici</a><a href=\"#\">Servizi</a><a href=\"#\">Contatti</a></nav>",
+      "css": ".ds-nav { display: flex; flex-wrap: wrap; gap: 2rem; font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); font-weight: 600; font-size: var(--step--1, 1rem); color: var(--ink, #0b1a2c); } .ds-nav a { color: inherit; text-decoration: none; padding-block: .5rem; border-bottom: 3px solid transparent; transition: border-color .18s ease-out; } .ds-nav a:hover { border-bottom-color: var(--blue, #3a4f69); } .ds-nav a[aria-current] { border-bottom-color: var(--ink, #0b1a2c); } .ds-nav a:focus-visible { outline: 3px solid var(--ink, #0b1a2c); outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "rounded.pill",
+      "description": "Pillola bianca con spunta blue (sky su fondi scuri), testo 600 a step-0. Per i \"quando ha senso\".",
+      "html": "<span class=\"ds-chip\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12l5 5 9-10\"/></svg>Sente ma non capisce le parole</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: .75rem; padding: 1rem 1.5rem; border-radius: 999px; background: #fff; font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); font-weight: 600; font-size: var(--step-0, 1.25rem); color: var(--ink, #0b1a2c); max-width: 34rem; } .ds-chip svg { width: 1.4rem; height: 1.4rem; flex: none; color: var(--blue, #3a4f69); }"
+    },
+    {
+      "name": "Box cliccabile",
+      "kind": "card",
+      "refersTo": "colors.sky-soft",
+      "description": "Box raggio 1.75rem (sky-soft su fondo bianco, bianco sugli altri toni, traslucido su blue/ink); a.card ha la freccia in cerchio rosso (accento di contatto ammesso) e si solleva di 6px con bordo ink, senza ombra.",
+      "html": "<a class=\"ds-card\" href=\"#\"><h3>Controllo dell’udito</h3><p>Una valutazione accurata, con calma.</p></a>",
+      "css": ".ds-card { position: relative; display: grid; gap: .75rem; align-content: start; padding: clamp(1.5rem, 2.5vw, 2.25rem); padding-bottom: 4.25rem; background: var(--sky-soft, #e6edf7); border: 2px solid transparent; border-radius: 1.75rem; color: var(--ink, #0b1a2c); text-decoration: none; font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); transition: transform .3s cubic-bezier(.16, 1, .3, 1), border-color .2s; } .ds-card h3 { margin: 0; font-size: var(--step-1, 1.5rem); font-weight: 700; line-height: 1.25; letter-spacing: -.02em; } .ds-card p { margin: 0; color: var(--blue, #3a4f69); font-size: var(--step-0, 1.25rem); line-height: 1.5; } .ds-card::after { content: ''; position: absolute; right: 1.5rem; bottom: 1.5rem; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--red, #dd182d) url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M13 6l6 6-6 6'/%3E%3C/svg%3E\") center / 1.1rem no-repeat; transition: transform .3s cubic-bezier(.16, 1, .3, 1); } .ds-card:hover { transform: translateY(-6px); border-color: var(--ink, #0b1a2c); } .ds-card:hover::after { transform: translateX(4px); } .ds-card:focus-visible { outline: 3px solid var(--ink, #0b1a2c); outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-card, .ds-card::after { transition: none; } }"
+    },
+    {
+      "name": "Passo del metodo",
+      "kind": "custom",
+      "refersTo": "typography.title",
+      "description": "Elenco verticale: numero in cerchio da 3.5rem con titolo e testo, separati da filetto. Cerchi ink di default; nel metodo in home (.home-path) rossi con l'ultimo ink.",
+      "html": "<ol class=\"ds-method\"><li><h3>Ascolto</h3><p>Prima di tutto parliamo.</p></li><li><h3>Prova</h3><p>Proviamo insieme, senza fretta.</p></li></ol>",
+      "css": ".ds-method { counter-reset: passo; list-style: none; margin: 0; padding: 0; font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); color: var(--ink, #0b1a2c); } .ds-method li { counter-increment: passo; display: grid; grid-template-columns: 3.5rem 1fr; gap: 0 1.25rem; padding-block: 1.5rem; border-top: 1px solid color-mix(in srgb, #3a4f69 28%, transparent); } .ds-method li:last-child { border-bottom: 1px solid color-mix(in srgb, #3a4f69 28%, transparent); } .ds-method li::before { content: counter(passo); grid-row: span 2; display: grid; place-items: center; width: 3.5rem; height: 3.5rem; border-radius: 50%; background: var(--red, #dd182d); color: #fff; font-weight: 700; font-size: var(--step-0, 1.25rem); } .ds-method li:last-child::before { background: var(--ink, #0b1a2c); } .ds-method h3 { margin: 0; align-self: end; font-size: var(--step-1, 1.5rem); line-height: 1.25; letter-spacing: -.02em; } .ds-method p { margin: 0; color: var(--blue-text, #33485f); font-size: var(--step-0, 1.25rem); }"
+    },
+    {
+      "name": "Riga con link",
+      "kind": "custom",
+      "refersTo": "colors.blue",
+      "description": "Riga con filetto (link-rows; stesso schema per faq, contact-list, check-list): icona di accento blue, sky su fondi scuri. Mai rossa.",
+      "html": "<ul class=\"ds-linkrows\"><li><a href=\"#\"><h3>Controllo dell’udito</h3><p>Circa un’ora, in studio.</p><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h13M13 6l6 6-6 6\"/></svg></a></li></ul>",
+      "css": ".ds-linkrows { list-style: none; margin: 0; padding: 0; font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); color: var(--ink, #0b1a2c); } .ds-linkrows li { border-top: 1px solid color-mix(in srgb, #3a4f69 22%, transparent); border-bottom: 1px solid color-mix(in srgb, #3a4f69 22%, transparent); } .ds-linkrows a { display: grid; grid-template-columns: 1fr 1.75rem; gap: .25rem 1rem; align-items: center; padding-block: 1.5rem; color: inherit; text-decoration: none; } .ds-linkrows h3 { margin: 0; font-size: var(--step-1, 1.5rem); line-height: 1.25; letter-spacing: -.02em; } .ds-linkrows a:hover h3 { text-decoration: underline; text-underline-offset: .2em; } .ds-linkrows p { grid-column: 1; margin: 0; color: var(--blue-text, #33485f); font-size: var(--step-0, 1.25rem); } .ds-linkrows svg { grid-column: 2; grid-row: 1 / span 2; width: 1.75rem; height: 1.75rem; color: var(--blue, #3a4f69); }"
+    },
+    {
+      "name": "Passi orizzontali",
+      "kind": "custom",
+      "refersTo": "colors.red",
+      "description": "Numero 01 a step-3 peso 800 in rosso (sky su fondi scuri) sopra un filetto ink da 3px.",
+      "html": "<ol class=\"ds-steps\"><li><h3>Prenota</h3><p>Una telefonata basta.</p></li><li><h3>Controllo</h3><p>Circa un’ora, in studio.</p></li><li><h3>Esito</h3><p>Le spieghiamo tutto.</p></li></ol>",
+      "css": ".ds-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 2.5rem 2rem; counter-reset: st; list-style: none; margin: 0; padding: 0; font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); color: var(--ink, #0b1a2c); } .ds-steps li { counter-increment: st; display: grid; gap: .75rem; align-content: start; padding-top: 1.5rem; border-top: 3px solid var(--ink, #0b1a2c); } .ds-steps li::before { content: counter(st, decimal-leading-zero); font-size: var(--step-3, 2.25rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; color: var(--red, #dd182d); } .ds-steps h3 { margin: 0; font-size: var(--step-1, 1.5rem); line-height: 1.25; letter-spacing: -.02em; } .ds-steps p { margin: 0; color: var(--blue-text, #33485f); font-size: var(--step-0, 1.25rem); line-height: 1.5; }"
+    },
+    {
+      "name": "Tessera",
+      "kind": "custom",
+      "refersTo": "typography.title",
+      "description": "Voce aperta senza contenitore: filetto superiore da 2px (--line, bianco al 35% sui fondi scuri), icona in cerchio da 3.5rem (bianco, sky-soft su tone-white), testo allineato a sinistra. Per i plus e gli usi.",
+      "html": "<div class=\"ds-tiles\"><div class=\"ds-tile\"><span class=\"ds-tile-ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12l5 5 9-10\"/></svg></span><h3>Prova gratuita</h3><p>Prima di decidere, lo prova a casa.</p></div><div class=\"ds-tile\"><span class=\"ds-tile-ico\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12l5 5 9-10\"/></svg></span><h3>Assistenza</h3><p>Pulizia e controlli in studio.</p></div></div>",
+      "css": ".ds-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); column-gap: clamp(1.5rem, 3vw, 2.5rem); row-gap: 2.5rem; padding: 2rem; background: var(--sky-soft, #e6edf7); font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); } .ds-tile { display: grid; gap: .75rem; align-content: start; padding-top: 1.5rem; border-top: 2px solid rgb(58 79 105 / .25); } .ds-tile-ico { display: grid; place-items: center; width: 3.5rem; height: 3.5rem; border-radius: 50%; background: #fff; color: var(--ink, #0b1a2c); margin-bottom: .5rem; } .ds-tile-ico svg { width: 1.75rem; height: 1.75rem; } .ds-tile h3 { margin: 0; color: var(--ink, #0b1a2c); font-size: var(--step-1, 1.5rem); line-height: 1.25; letter-spacing: -.02em; } .ds-tile p { margin: 0; color: var(--blue-text, #33485f); font-size: var(--step-0, 1.25rem); line-height: 1.5; }"
+    },
+    {
+      "name": "Apertura con foto",
+      "kind": "custom",
+      "refersTo": "colors.ink",
+      "description": "PageHero con image (layout photo) e home .ph-photo: la foto copre tutta la sezione (min-height clamp(34rem, 78svh, 46rem)), testo bianco sul lato velato d'inchiostro; .rev porta il testo a destra da 900px; su mobile il testo scende in basso e la velatura sale dal fondo. La velatura e un trattamento della foto, non un fondo.",
+      "html": "<section class=\"ds-photo rev\"><div class=\"ds-photo-bg\" aria-hidden=\"true\"></div><div class=\"ds-photo-text\"><h1>Ascolto su misura</h1><p>Il Dottore la riceve nel suo studio, con calma.</p></div></section>",
+      "css": ".ds-photo { position: relative; display: grid; align-items: end; min-height: clamp(34rem, 78svh, 46rem); isolation: isolate; overflow: hidden; color: #fff; font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); } .ds-photo-bg { position: absolute; inset: 0; z-index: -2; background: var(--blue, #3a4f69); } .ds-photo::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgb(11 26 44 / .96) 0%, rgb(11 26 44 / .9) 38%, rgb(11 26 44 / .35) 68%, rgb(11 26 44 / .1) 100%); } .ds-photo-text { max-width: 40rem; padding: clamp(10rem, 30vw, 14rem) clamp(1.25rem, 5vw, 3rem) clamp(2.5rem, 6vw, 4rem); } .ds-photo h1 { margin: 0 0 1rem; max-width: 15ch; font-size: clamp(2.5rem, 1.6rem + 4.4vw, 4.5rem); font-weight: 700; line-height: 1.12; letter-spacing: -.035em; } .ds-photo p { margin: 0; color: var(--sky-soft, #e6edf7); font-size: clamp(1.5rem, 1.35rem + .7vw, 1.875rem); font-weight: 500; line-height: 1.45; } @media (min-width: 900px) { .ds-photo { align-items: center; } .ds-photo::before { background: linear-gradient(90deg, rgb(11 26 44 / .94) 0%, rgb(11 26 44 / .86) 34%, rgb(11 26 44 / .3) 62%, rgb(11 26 44 / 0) 80%); } .ds-photo.rev::before { background: linear-gradient(270deg, rgb(11 26 44 / .94) 0%, rgb(11 26 44 / .86) 34%, rgb(11 26 44 / .3) 62%, rgb(11 26 44 / 0) 80%); } .ds-photo-text { padding-block: clamp(4rem, 8vw, 7rem); } .ds-photo.rev .ds-photo-text { margin-left: auto; } }"
+    },
+    {
+      "name": "Pannello",
+      "kind": "custom",
+      "refersTo": "colors.blue",
+      "description": "Blocco arrotondato 2.25rem su blue (variante .sky su azzurro) con testo e azioni affiancati, per le chiamate all'azione intermedie.",
+      "html": "<div class=\"ds-panel\"><div><h3>Vuole parlarne di persona?</h3><p>Il Dottore la riceve su appuntamento.</p></div><a class=\"ds-panel-btn\" href=\"#\">Chiama</a></div>",
+      "css": ".ds-panel { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 2rem; align-items: center; padding: clamp(2rem, 5vw, 4rem); border-radius: 2.25rem; background: var(--blue, #3a4f69); color: #fff; font-family: var(--font, 'Montserrat Variable', 'Montserrat', system-ui, sans-serif); } .ds-panel h3 { margin: 0 0 1rem; color: #fff; font-size: var(--step-1, 1.5rem); line-height: 1.25; letter-spacing: -.02em; } .ds-panel p { margin: 0; color: var(--sky, #b6cae4); font-size: var(--step-0, 1.25rem); } .ds-panel-btn { justify-self: start; display: inline-flex; align-items: center; justify-content: center; min-height: 3.75rem; padding: .9rem 1.6rem; font-size: var(--step-0, 1.25rem); font-weight: 700; background: var(--red, #dd182d); color: #fff; border-radius: 999px; text-decoration: none; transition: background-color .18s ease-out; } .ds-panel-btn:hover { background: var(--red-deep, #b9101f); } .ds-panel-btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Lo studio del Dottore",
+    "overview": "Il sito è una persona che accoglie, non un catalogo di apparecchi. Inchiostro blu su fondi chiari, titoli pesanti e stretti in Montserrat, testo corrente da 20px o più, un solo colore caldo (il rosso) riservato a chi vuole chiamare. Densità bassa, molto respiro, una sola idea per sezione. Il sistema è pensato per un pubblico adulto e anziano da smartphone: contrasto alto, bersagli di tocco grandi, nessuna animazione che complichi.\n\nLa firma è la persona: foto reali a tutto fondo nelle aperture, niente motivi grafici inventati (le onde decorative e le cornici ad arco sono state tolte su richiesta del cliente). Le tre onde restano solo nel logo. La struttura alterna fondi a campo pieno (sei toni), impianti diversi e contenuti di forma diversa (righe con filetto, box, passi orizzontali, tessere aperte con filetto, pannelli, foto a tutta altezza), così ogni sezione si riconosce anche su desktop.\n\nIl sistema nasce dalla Home \"Il volto\" (validata dall'utente), centrata sulla persona del Dott. Pizzuti: fondo bianco, il Dottore nel suo studio in una foto a tutto fondo nell'apertura. Il blocco `:root` di base.css è la base comune; la pagina ridefinisce solo `--bg`, `--fg-soft`, `--line`.",
+    "keyCharacteristics": [
+      "Palette del brandbook (blu, inchiostro, azzurro) più un rosso solo per i contatti.",
+      "Montserrat Variable ovunque; scala fluida; corpo minimo 20px.",
+      "Bottoni a pillola alti 60px (3.75rem), con bordo da 3px.",
+      "Libreria di sezioni (`styles/sections.css`, `Section.astro`, `PageHero.astro`): tono x impianto x contenuto, alternati pagina per pagina; nessuna ombra decorativa.",
+      "Foto a tutto fondo come firma; nessun motivo decorativo di linee né cornice ad arco.",
+      "Poche animazioni: ingresso `rise` nelle testate, comparsa allo scroll con sfalsamento (`data-reveal`, `data-stagger`), svelatura delle foto grandi (`data-wipe`), sollevamento dei box cliccabili. Tutto disattivato con prefers-reduced-motion."
+    ],
+    "rules": [
+      {
+        "name": "The Un Solo Rosso Rule",
+        "body": "Il rosso (#dd182d) segnala dove si contatta il Centro. Bottone primario e CTA in header sono rossi; le sole altre eccezioni sono tre accenti di percorso: i contatori del metodo in home, i numeri dei passi orizzontali e la freccia dei box cliccabili. Tutto il resto (icone di accento, spunte, sottolineature) è blu e inchiostro, azzurro sui fondi scuri. La sua rarità è la funzione.",
+        "section": "colors"
+      },
+      {
+        "name": "The Fondi Piani Rule",
+        "body": "Le sezioni cambiano per campo pieno, non per gradienti (due sole sfumature ammesse: la velatura d'inchiostro sulle foto di apertura, che è un trattamento della foto, e il tono `fade` delle testate senza foto, da `sky` a `sky-soft` a 120°, solo con colori del brand). Toni disponibili: `white`, `soft` (sky-soft), `tint` (paper-tint), `sky`, `blue`, `ink`. Due sezioni consecutive non hanno mai lo stesso tono; `blue` e `ink` non si toccano.",
+        "section": "colors"
+      },
+      {
+        "name": "The Venti Pixel Rule",
+        "body": "Nessun testo corrente sotto 1.25rem, nemmeno dentro box, tessere e passi; `--step--1` (1rem) solo per etichette, note, footer.",
+        "section": "typography"
+      },
+      {
+        "name": "The Peso Non Dimensione Rule",
+        "body": "Titolo e corpo si distinguono per peso e scala; il tracking si stringe man mano che il titolo cresce (da -0.02em a -0.04em).",
+        "section": "typography"
+      },
+      {
+        "name": "The Niente Ombre Rule",
+        "body": "Nessuna ombra decorativa. Separare con un filetto, un bordo o un cambio di campo.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usare `red` solo per telefono, WhatsApp e CTA di contatto, più i tre accenti di percorso (contatori del metodo, numeri dei passi, freccia dei box).",
+      "Do mantenere corpo a `--step-0` (20px+) e bersagli di tocco da 3.5-3.75rem.",
+      "Do alternare tono, impianto e contenuto tra sezioni consecutive.",
+      "Do ridefinire per pagina solo `--bg`, `--fg-soft`, `--line`.",
+      "Do rispettare prefers-reduced-motion: niente comparse, svelature né sollevamenti.",
+      "Do dichiarare i dati di esempio (telefono, indirizzo, orari, P.IVA) in `config.ts`."
+    ],
+    "donts": [
+      "Don't usare ombre decorative o gradienti; non mettere due sezioni di box una dopo l'altra.",
+      "Don't introdurre un secondo carattere o un colore fuori dalla palette del brandbook.",
+      "Don't impostare testo corrente sotto 1.25rem.",
+      "Don't usare il rosso per decorazione o per elementi senza azione di contatto, fuori dai tre accenti di percorso."
+    ]
+  }
+}

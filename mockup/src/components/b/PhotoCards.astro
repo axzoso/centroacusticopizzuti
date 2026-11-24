@@ -1,0 +1,23 @@
+---
+// Card a foto con sfumatura dal basso nel campo profondo (rif. screenshot 1).
+// layout "bento": prima card alta a sinistra, due impilate a destra, le altre in fila sotto.
+import { bHref } from '../../b/link';
+import IconB from './IconB.astro';
+const { items = [], layout = 'row' } = Astro.props;
+---
+<div class:list={['b-pcards', `b-pcards--${layout}`, `n-${items.length}`]} data-stagger>
+  {items.map((c, i) => (
+    <article class:list={['b-pcard', { 'is-big': layout === 'bento' && i === 0 }]}>
+      <img src={c.image} alt={c.imageAlt} style={c.imagePos ? `object-position:${c.imagePos}` : undefined} loading="lazy" width="1600" height="1067" />
+      <div class="b-pcard-body">
+        <div class="b-pcard-copy">
+          <h3>{c.titolo}</h3>
+          {c.testo && <p>{c.testo}</p>}
+        </div>
+        <a class="b-btn b-btn--line b-pcard-link" href={bHref(c.href)}>
+          {c.cta}<IconB name="arrow" class="b-arrow" /><span class="visually-hidden">: {c.titolo}</span>
+        </a>
+      </div>
+    </article>
+  ))}
+</div>

@@ -1,0 +1,78 @@
+---
+// Form di contatto della Proposta B (mockup: non invia). Stessa logica e stessi motivi di ContactForm.astro.
+// ?motivo=... nell'URL o data-motivo su un link precompila il campo.
+import { bHref } from '../../b/link';
+import { SITE } from '../../config';
+import IconB from './IconB.astro';
+const { titolo, lead } = Astro.props;
+const motivi = [
+  ['controllo', 'Vorrei prenotare un controllo dell’udito'],
+  ['caro', 'Cerco aiuto per una persona cara'],
+  ['assistenza', 'Ho già un apparecchio e mi serve assistenza'],
+  ['ssn', 'Vorrei informazioni sui contributi SSN'],
+  ['auricolari', 'Vorrei informazioni sugli auricolari su misura'],
+  ['preventivo', 'Vorrei un preventivo'],
+  ['altro', 'Altro'],
+];
+---
+<div class="b-formbox" id="form">
+  <div class="b-formbox-head">
+    <h2 class="b-h3">{titolo}</h2>
+    {lead && <p class="b-small">{lead}</p>}
+  </div>
+  <form class="b-form" id="b-contact-form" novalidate>
+    <div class="b-field">
+      <label for="bf-nome">Il tuo nome</label>
+      <input id="bf-nome" name="nome" type="text" autocomplete="name" required />
+    </div>
+    <div class="b-field">
+      <label for="bf-tel">Numero di telefono</label>
+      <input id="bf-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="bf-tel-h" />
+      <span class="b-hint" id="bf-tel-h">Ti richiamo io.</span>
+    </div>
+    <div class="b-field b-field--full">
+      <label for="bf-motivo">Come posso aiutarti?</label>
+      <select id="bf-motivo" name="motivo">
+        {motivi.map(([v, l]) => <option value={v}>{l}</option>)}
+      </select>
+    </div>
+    <div class="b-field b-field--full">
+      <label for="bf-msg">Un messaggio, se vuoi <span class="b-hint">(facoltativo)</span></label>
+      <textarea id="bf-msg" name="messaggio" rows="4"></textarea>
+    </div>
+    <label class="b-check-line b-field--full">
+      <input type="checkbox" name="privacy" required />
+      <span>Ho letto l’<a href={bHref('/privacy-policy/')} target="_blank" rel="noopener">informativa sulla privacy<span class="visually-hidden"> (si apre in una nuova scheda)</span></a> e acconsento al trattamento dei miei dati per essere ricontattato.</span>
+    </label>
+    <div class="b-form-foot b-field--full">
+      <button class="b-btn b-btn--red" type="submit">Richiamami<IconB name="arrow" class="b-arrow" /></button>
+      <p class="b-small">Preferisci parlare subito? <a href={SITE.telefonoHref}>Chiamami</a> o <a href={SITE.whatsappHref}>scrivimi su WhatsApp</a>.</p>
+    </div>
+    <p class="b-form-error b-field--full" id="bf-err" role="alert" hidden>Controlla i campi evidenziati: servono nome, telefono e consenso alla privacy.</p>
+    <p class="b-form-sent b-field--full" id="bf-sent" role="status" hidden>Grazie! Ti richiamo appena posso. (Mockup: sul sito vero la richiesta arriva al Centro.)</p>
+  </form>
+</div>
+<script is:inline>
+  (function () {
+    var f = document.getElementById('b-contact-form');
+    if (!f) return;
+    var sel = document.getElementById('bf-motivo');
+    function applyMotivo(m) {
+      if (!m || !sel) return;
+      for (var i = 0; i < sel.options.length; i++) if (sel.options[i].value === m) sel.selectedIndex = i;
+    }
+    applyMotivo(new URLSearchParams(location.search).get('motivo'));
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('[data-motivo]');
+      if (a) applyMotivo(a.getAttribute('data-motivo'));
+    });
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var ok = f.checkValidity();
+      f.classList.add('was-validated');
+      document.getElementById('bf-err').hidden = ok;
+      if (!ok) { var bad = f.querySelector(':invalid'); if (bad) bad.focus(); return; }
+      document.getElementById('bf-sent').hidden = false;
+    });
+  })();
+</script>

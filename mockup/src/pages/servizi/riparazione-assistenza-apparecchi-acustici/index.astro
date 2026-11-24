@@ -1,0 +1,47 @@
+---
+import Page from '../../../layouts/Page.astro';
+import PageHero from '../../../components/PageHero.astro';
+import Section from '../../../components/Section.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import Faq from '../../../components/Faq.astro';
+import Icon from '../../../components/Icon.astro';
+import { SITE } from '../../../config';
+import { RIPARA as R } from '../../../copy/servizi';
+---
+<Page title={R.title} description={R.description} current="/servizi/">
+  <PageHero titolo={R.h1} lead={R.lead} image="/img/apparecchio-mano-arancio.jpg" imageAlt="Una mano apre la custodia di un apparecchio acustico" imagePos="65% 50%">
+    <div class="btn-row">
+      <a class="btn btn-primary" href={SITE.telefonoHref}><Icon name="phone" />Chiamami: {SITE.telefonoVisibile}</a>
+      <a class="btn btn-secondary" href="/contatti/?motivo=assistenza#form">Richiedi assistenza</a>
+    </div>
+  </PageHero>
+
+  <Section tone="soft" layout="wide" title={R.casiTitolo}>
+    <div class="cards c3" data-stagger>
+      {R.casi.map((c, i) => <div class="card"><span class="card-num">{i + 1}</span><h3>{c.titolo}</h3><p>{c.testo}</p></div>)}
+    </div>
+  </Section>
+
+  <Section tone="blue" layout="wide" title={R.serviziTitolo}>
+    <ol class="steps c4" data-stagger>
+      {R.servizi.map((p) => <li><h3>{p.titolo}</h3><p>{p.testo}</p></li>)}
+    </ol>
+  </Section>
+
+  <section class="sec sec-feature tone-white" aria-labelledby="a-t">
+    <div class="feature">
+      <figure class="feature-img" data-wipe><img src="/img/regolazione-orecchio.jpg" alt="Regolazione di un apparecchio acustico sull’orecchio" style="object-position:50% 45%" loading="lazy" width="888" height="889" /></figure>
+      <div class="feature-text" data-stagger>
+        <h2 id="a-t">{R.altroTitolo}</h2>
+        <p class="lead">{R.altro}</p>
+        <p><a class="btn btn-primary" href={SITE.telefonoHref}><Icon name="phone" />Chiamami</a></p>
+      </div>
+    </div>
+  </section>
+
+  <Section tone="tint" layout="center" title={R.faqTitolo}>
+    <Faq items={R.faq} />
+  </Section>
+
+  <CtaBand titolo="Qualcosa non va? Chiamami." testo="Lo guardiamo insieme e ti dico cosa si può fare." />
+</Page>

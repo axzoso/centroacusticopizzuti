@@ -1,0 +1,29 @@
+---
+import Page from '../layouts/Page.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../config';
+---
+<Page title="Pagina non trovata · Centro Acustico Pizzuti" description="La pagina che cerchi non esiste o è stata spostata. Torna alla home del Centro Acustico Pizzuti di Cosenza oppure chiamaci.">
+  <section class="nf">
+    <div class="container nf-grid">
+      <div class="nf-text">
+        <p class="nf-code" aria-hidden="true">4<span>0</span>4</p>
+        <h1 class="rise">Come? Questa pagina non l’ho sentita.</h1>
+        <p class="lead rise rise-2">Forse si è spostata, forse l’indirizzo era sbagliato, forse parlava troppo piano. Capita anche ai migliori. Ripetiamo insieme dall’inizio?</p>
+        <div class="btn-row rise rise-3">
+          <a class="btn btn-primary" href="/"><Icon name="arrow" />Torna alla home</a>
+          <a class="btn btn-secondary" href={SITE.telefonoHref}><Icon name="phone" />Chiamami: {SITE.telefonoVisibile}</a>
+        </div>
+      </div>
+      <nav class="nf-links" aria-label="Pagine utili">
+        <h2>Magari cercavi una di queste</h2>
+        <ul class="link-rows">
+          <li><a href="/servizi/controllo-udito/"><h3>Controllo dell’udito</h3><Icon name="arrow" /><p>Per sapere come senti oggi.</p></a></li>
+          <li><a href="/apparecchi-acustici/"><h3>Apparecchi acustici</h3><Icon name="arrow" /><p>Scelti su di te.</p></a></li>
+          <li><a href="/chi-siamo/"><h3>Il Centro e il Metodo</h3><Icon name="arrow" /><p>Chi sono e come lavoro.</p></a></li>
+          <li><a href="/contatti/"><h3>Contatti</h3><Icon name="arrow" /><p>Dove siamo e come raggiungerci.</p></a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+</Page>

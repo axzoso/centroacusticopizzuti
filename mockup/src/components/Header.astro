@@ -1,0 +1,21 @@
+---
+import { SITE, NAV } from '../config';
+import Icon from './Icon.astro';
+const { logo = '/logos/logo-color.png', current = '' } = Astro.props;
+---
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label={`${SITE.nome}, home`}><img src={logo} alt={SITE.nome} width="1418" height="741" /></a>
+    <details class="m-menu">
+      <summary>Menu</summary>
+      <nav aria-label="Principale (mobile)">
+        <a href="/">Home</a>
+        {NAV.map((v) => <a href={v.href} aria-current={current === v.href ? 'page' : undefined}>{v.label}</a>)}
+      </nav>
+    </details>
+    <nav aria-label="Principale">
+      {NAV.map((v) => <a href={v.href} aria-current={current === v.href ? 'page' : undefined}>{v.label}</a>)}
+    </nav>
+    <a class="btn btn-primary header-cta" href={SITE.telefonoHref}><Icon name="phone" />{SITE.telefonoVisibile}</a>
+  </div>
+</header>

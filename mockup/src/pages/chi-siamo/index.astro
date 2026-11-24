@@ -1,0 +1,45 @@
+---
+import Page from '../../layouts/Page.astro';
+import PageHero from '../../components/PageHero.astro';
+import Section from '../../components/Section.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Icon from '../../components/Icon.astro';
+import { CHI } from '../../copy/chi-siamo';
+const ico = ['ear', 'user', 'chat', 'refresh'];
+const icoMap = ['chat', 'user', 'heart', 'refresh'];
+---
+<Page title={CHI.title} description={CHI.description} current="/chi-siamo/">
+  <PageHero layout="center" tone="fade" titolo={CHI.h1} lead={CHI.lead} />
+
+  <section class="sec sec-feature tone-white" aria-labelledby="chi-t">
+    <div class="feature">
+      <figure class="feature-img" data-wipe><img src="/img/dottore-studio.jpg" alt="Il Dott. Pizzuti alla sua scrivania nel Centro" style="object-position:100% 40%" loading="lazy" width="879" height="671" /></figure>
+      <div class="feature-text" data-stagger>
+        <h2 id="chi-t">{CHI.chiTitolo}</h2>
+        {CHI.chi.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <Section tone="blue" layout="wide" id="metodo" title={CHI.metodoTitolo} lead={CHI.metodoLead}>
+    <ol class="steps c3" data-stagger>
+      {CHI.passi.map((p) => <li><h3>{p.titolo}</h3><p>{p.testo}</p></li>)}
+    </ol>
+  </Section>
+
+  <figure class="banner" data-wipe><img src="/img/studio-ufficio.jpg" alt="Lo studio del Centro Acustico Pizzuti, luminoso e accogliente" style="object-position:50% 12%" loading="lazy" width="1414" height="801" /></figure>
+
+  <Section tone="soft" layout="center" title={CHI.principiTitolo}>
+    <div class="tiles" data-stagger>
+      {CHI.principi.map((p, i) => <div class="tile"><span class="tile-ico"><Icon name={icoMap[i]} /></span><h3>{p.titolo}</h3><p>{p.testo}</p></div>)}
+    </div>
+  </Section>
+
+  <Section tone="white" layout="wide" title={CHI.vaiTitolo}>
+    <div class="cards c3" data-stagger>
+      {CHI.vai.map((v) => <a class="card" href={v.href}><h3>{v.titolo}</h3><p>{v.testo}</p></a>)}
+    </div>
+  </Section>
+
+  <CtaBand titolo="Vieni a trovarmi, o chiamami." />
+</Page>
