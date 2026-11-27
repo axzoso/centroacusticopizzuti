@@ -110,11 +110,14 @@ Regole da rispettare mentre si sviluppa in Astro, così il passaggio dopo sarà 
 - Nessuna libreria JavaScript pesante: solo il minimo, così si replica facilmente in WordPress.
 - Immagini in `mockup/public/img/` con crediti in `CREDITS.md`.
 
-Stato dell'ambiente WordPress:
+Stato dell'ambiente WordPress (aggiornato 2026-11-27, Fase 4 completata in bozza — solo proposta A):
 
-- ⬜ WordPress, Elementor Pro e Novamira non esistono ancora.
-- ⬜ Il CLI di Novamira non è installato su questo computer.
-- ⬜ Piano di sviluppo su WordPress: da fare dopo l'approvazione del sito su `npm run dev`.
+- ✅ Staging configurato su `https://dev1.minimalstudiodev.it/` (WordPress 7.1.5, PHP 8.3.37, tema **Hello Elementor 3.5.2**, Elementor + Pro 4.4.2 Expert V4, Novamira 2.0.0, `noindex` attivo, permalink `/%postname%/`, fuso `Europe/Rome`, Google Fonts Elementor spenti).
+- ✅ Plugin **`pizzuti-core` 1.0.4** installato e attivo: CSS generato da `tools/port-css.js` (`sha1 20c6eebcf8`), Montserrat Variable servito in locale (**0 richieste a Google Fonts**), favicon dal logo, 16 shortcode Dati del Centro, 5 posizioni menu, SEO + compatibilità Yoast, anti-spam e modalità prova moduli, menu **Centro Pizzuti** (7 schede, Stato tutta verde/gialla tranne i 7 dati "esempio").
+- ✅ Libreria media popolata con **19 immagini placeholder** (`#45`–`#61`, `#136`–`#137`, mappa in `tools/css/immagini.json`, da sostituire con le foto definitive approvate prima della produzione).
+- ✅ Fase 3 **pubblicata**: 5 menu WordPress (`#3`–`#7`) + 4 template Theme Builder Elementor Pro (`#122` Header, `#125` Footer, `#128` Barra mobile, `#133` Errore 404).
+- ✅ Fase 4 completata **in bozza** (in attesa di conferma per pubblicazione e `page_on_front`): tutte le **11 pagine WordPress** della proposta A (`#254`, `#268`, `#274`, `#280`, `#286`, `#292`, `#298`, `#304`, `#3`, `#315`, `#321`), 100% atomiche V4, moduli `e-form` di Home e Contatti collaudati (6/6 scenari verdi, honeypot ultimo campo), FAQ `e-accordion` con `FAQPage` JSON-LD, 11/11 verificate per parità/SEO/salute.
+- ⬜ Fase 5: pubblicazione in staging (con conferma), impostazione Home statica e verifiche finali su URL reali (link interni, contenuti, salute, consegna staging).
 
 ---
 

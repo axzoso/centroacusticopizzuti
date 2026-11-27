@@ -1,0 +1,97 @@
+{
+  "/img/studio-ufficio.jpg": {
+    "id": 45,
+    "url": "/wp-content/uploads/2026/11/studio-ufficio.jpg",
+    "alt": "Il Dott. Pasqualino Pizzuti alla scrivania del suo studio"
+  },
+  "/img/dottore-ritratto.jpg": {
+    "id": 46,
+    "url": "/wp-content/uploads/2026/11/dottore-ritratto.jpg",
+    "alt": "Ritratto del Dott. Pasqualino Pizzuti, audioprotesista a Cosenza"
+  },
+  "/img/dottore-studio.jpg": {
+    "id": 47,
+    "url": "/wp-content/uploads/2026/11/dottore-studio.jpg",
+    "alt": "Il Dott. Pizzuti alla sua scrivania nel Centro"
+  },
+  "/img/dottore-apparecchio.jpg": {
+    "id": 48,
+    "url": "/wp-content/uploads/2026/11/dottore-apparecchio.jpg",
+    "alt": "Il Dott. Pizzuti mostra un apparecchio acustico"
+  },
+  "/img/regolazione-orecchio.jpg": {
+    "id": 49,
+    "url": "/wp-content/uploads/2026/11/regolazione-orecchio.jpg",
+    "alt": "Regolazione di un apparecchio acustico durante una visita"
+  },
+  "/img/visita-audiogramma.jpg": {
+    "id": 50,
+    "url": "/wp-content/uploads/2026/11/visita-audiogramma.jpg",
+    "alt": "Il Dott. Pizzuti mostra a una paziente l’esito del controllo sul monitor"
+  },
+  "/img/vetrina-centro.jpg": {
+    "id": 51,
+    "url": "/wp-content/uploads/2026/11/vetrina-centro.jpg",
+    "alt": "L’ingresso del Centro Acustico Pizzuti, con il Dott. Pizzuti sulla porta"
+  },
+  "/img/apparecchi-quaderno-rosso.jpg": {
+    "id": 52,
+    "url": "/wp-content/uploads/2026/11/apparecchi-quaderno-rosso.jpg",
+    "alt": "Apparecchi acustici e custodia su una scrivania"
+  },
+  "/img/apparecchio-mano-arancio.jpg": {
+    "id": 53,
+    "url": "/wp-content/uploads/2026/11/apparecchio-mano-arancio.jpg",
+    "alt": "Una mano apre la custodia di un apparecchio acustico"
+  },
+  "/img/auricolari-su-misura.jpg": {
+    "id": 54,
+    "url": "/wp-content/uploads/2026/11/auricolari-su-misura.jpg",
+    "alt": "Due auricolari su misura, uno blu e uno rosso"
+  },
+  "/img/prova-mani-custodia.jpg": {
+    "id": 55,
+    "url": "/wp-content/uploads/2026/11/prova-mani-custodia.jpg",
+    "alt": "Due mani estraggono un apparecchio acustico dalla custodia"
+  },
+  "/img/familiare-supporto.jpg": {
+    "id": 56,
+    "url": "/wp-content/uploads/2026/11/familiare-supporto.jpg",
+    "alt": "Un giovane accompagna un familiare anziano durante la prova di un apparecchio"
+  },
+  "/img/senior-apparecchio.jpg": {
+    "id": 57,
+    "url": "/wp-content/uploads/2026/11/senior-apparecchio.jpg",
+    "alt": "Un uomo con un apparecchio acustico durante una conversazione"
+  },
+  "/img/b/nonno-nipote.jpg": {
+    "id": 136,
+    "url": "/wp-content/uploads/2026/11/nonno-nipote.jpg",
+    "alt": "Un nonno sorridente con il nipotino in braccio"
+  },
+  "/img/b/telefono-sorriso.jpg": {
+    "id": 137,
+    "url": "/wp-content/uploads/2026/11/telefono-sorriso.jpg",
+    "alt": "Una signora sorride al telefono"
+  },
+  "/img/badge-google.png": {
+    "id": 58,
+    "url": "/wp-content/uploads/2026/11/badge-google.png",
+    "alt": "Valutazione Google 5.0 su 5"
+  },
+  "/logos/logo-color.png": {
+    "id": 59,
+    "url": "/wp-content/uploads/2026/11/logo-color.png",
+    "alt": "Centro Acustico Pizzuti"
+  },
+  "/logos/logo-white.png": {
+    "id": 60,
+    "url": "/wp-content/uploads/2026/11/logo-white.png",
+    "alt": "Centro Acustico Pizzuti"
+  },
+  "/logos/mark-color.png": {
+    "id": 61,
+    "url": "/wp-content/uploads/2026/11/mark-color.png",
+    "alt": "Simbolo Centro Acustico Pizzuti"
+  }
+}

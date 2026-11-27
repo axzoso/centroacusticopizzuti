@@ -1,0 +1,27 @@
+/* ===== 1. Reset degli stili base di Elementor (Elementor 4.4.2, widget atomici V4) ===============
+   Adattato da artes/tools/rev2/css/reset.css.
+   Specificità (0,2,1): supera la base di Elementor (0,2,0) e resta sotto ogni regola del mockup
+   portato (almeno (0,2,2)), così vince sempre il mockup. */
+body.pizzuti .e-con {
+  position: revert; padding: revert; min-width: revert; display: revert; gap: revert;
+  width: revert; height: revert; min-height: revert; overflow: revert; border-radius: revert; margin: revert;
+  flex-direction: revert; flex-grow: revert; justify-content: revert; align-items: revert;
+  list-style: revert; cursor: revert; transition: revert;
+}
+body.pizzuti .e-con::before {
+  position: revert; content: revert; width: revert; height: revert; display: revert; inset: revert;
+}
+body.pizzuti .e-heading-base,
+body.pizzuti .e-paragraph-base { margin: revert; }
+body.pizzuti .e-button-base {
+  padding: revert; border: revert; border-radius: revert; background: revert; text-align: revert; display: revert;
+}
+body.pizzuti .e-image-base { display: revert; height: auto; }
+body.pizzuti .e-accordion-base,
+body.pizzuti .e-accordion-item-base,
+body.pizzuti .e-accordion-item-header-base,
+body.pizzuti .e-accordion-item-title-base,
+body.pizzuti .e-accordion-item-content-base {
+  position: revert; width: revert; min-width: revert; padding: revert; margin: revert;
+  display: revert; flex-direction: revert; gap: revert; justify-content: revert; align-items: revert;
+}

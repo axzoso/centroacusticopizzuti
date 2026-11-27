@@ -1,0 +1,470 @@
+/* ===== 3. Adattamenti al markup di Elementor 4.4.2 (proposta A) ==================================
+   Solo differenze strutturali tra Astro e i widget atomici di Elementor.
+   Usare :where() per non battere le regole del mockup a parità di specificità. */
+
+/* Tag che Elementor V4 non ammette nativamente (sostituiti da div/span con classe pizzuti-<tag>):
+   ripristina i valori di partenza del browser con specificità 0 extra. */
+body.pizzuti .elementor :where(.pizzuti-strong, .pizzuti-b) { font-weight: bolder; }
+body.pizzuti .elementor :where(.pizzuti-em, .pizzuti-i) { font-style: italic; }
+body.pizzuti .elementor :where(.pizzuti-small) { font-size: smaller; }
+body.pizzuti .elementor :where(.pizzuti-figure, .pizzuti-figcaption, .pizzuti-blockquote, .pizzuti-dl, .pizzuti-dt, .pizzuti-dd, .pizzuti-ul, .pizzuti-ol) { display: block; }
+body.pizzuti .elementor :where(.pizzuti-figure) { margin: 1em 40px; }
+body.pizzuti .elementor :where(.pizzuti-li) { display: list-item; }
+body.pizzuti .elementor :where([hidden]) { display: none; }
+
+/* Righe opzionali vuote (es. orari del footer oltre quelli configurati) e social vuoti */
+body.pizzuti .elementor .footer-hours > div:has(.pizzuti-v:empty),
+body.pizzuti .elementor .footer-social a[href=""],
+body.pizzuti .elementor .footer-social a[href="#"] { display: none; }
+
+/* Inquadrature foto (inline style="object-position:..." del mockup -> classi riutilizzabili) */
+body.pizzuti .elementor :where(.pizzuti-obj-20-40) { object-position: 20% 40%; }
+body.pizzuti .elementor :where(.pizzuti-obj-50-50) { object-position: 50% 50%; }
+body.pizzuti .elementor :where(.pizzuti-obj-50-40) { object-position: 50% 40%; }
+body.pizzuti .elementor :where(.pizzuti-obj-50-45) { object-position: 50% 45%; }
+body.pizzuti .elementor :where(.pizzuti-obj-50-12) { object-position: 50% 12%; }
+body.pizzuti .elementor :where(.pizzuti-obj-55-40) { object-position: 55% 40%; }
+body.pizzuti .elementor :where(.pizzuti-obj-60-50) { object-position: 60% 50%; }
+body.pizzuti .elementor :where(.pizzuti-obj-65-50) { object-position: 65% 50%; }
+body.pizzuti .elementor :where(.pizzuti-obj-70-35) { object-position: 70% 35%; }
+body.pizzuti .elementor :where(.pizzuti-obj-70-40) { object-position: 70% 40%; }
+body.pizzuti .elementor :where(.pizzuti-obj-75-35) { object-position: 75% 35%; }
+body.pizzuti .elementor :where(.pizzuti-obj-100-40) { object-position: 100% 40%; }
+
+/* Stili inline delle pagine proposta A mappati su classi utility (devono vincere su regole di tag come p { margin: 0 }) */
+body.pizzuti .elementor .pizzuti-mb-sec { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+body.pizzuti .elementor .pizzuti-head-center {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem); text-align: center; justify-items: center; margin-inline: auto; max-width: 44rem;
+}
+body.pizzuti .elementor .pizzuti-note-center { text-align: center; margin: 1.5rem auto 0; }
+body.pizzuti .elementor .pizzuti-sky { color: var(--sky); }
+body.pizzuti .elementor .pizzuti-mt-2 { margin-top: 2rem; }
+body.pizzuti .elementor .map-consent-box .btn-row { width: 100%; }
+
+/* Widget shortcode Elementor (usato per [pizzuti_mappa] e [pizzuti_recensioni]): nessun box extra */
+body.pizzuti .elementor :where(.elementor-widget-shortcode) { margin: 0; padding: 0; }
+body.pizzuti .elementor :where(.elementor-widget-shortcode > .elementor-widget-container) { margin: 0; padding: 0; }
+
+/* ===== Icone SVG (tracciati 24x24 stroke 2px identici a mockup/src/components/Icon.astro) ======== */
+body.pizzuti .elementor :where(.btn.pizzuti-ico-phone, .btn.pizzuti-ico-whatsapp, .btn.pizzuti-ico-arrow, .btn.pizzuti-ico-users, .btn.pizzuti-ico-pin, .btn.pizzuti-ico-clock, .btn.pizzuti-ico-mail, .btn.pizzuti-ico-chat)::before,
+body.pizzuti .elementor :where(.btn.pizzuti-ico-after-arrow)::after {
+  content: '';
+  position: static;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  background-color: currentColor;
+  -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain;
+  mask-position: center; mask-repeat: no-repeat; mask-size: contain;
+}
+body.pizzuti .elementor :where(.btn.pizzuti-ico-after-arrow)::after {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.tile-ico)::before {
+  content: '';
+  position: static;
+  display: block;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: currentColor;
+  -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain;
+  mask-position: center; mask-repeat: no-repeat; mask-size: contain;
+}
+body.pizzuti .elementor :where(.card-num)::before {
+  content: '';
+  position: static;
+  display: block;
+  width: 1.3rem;
+  height: 1.3rem;
+  background-color: currentColor;
+  -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain;
+  mask-position: center; mask-repeat: no-repeat; mask-size: contain;
+}
+body.pizzuti .elementor :where(.chip)::before {
+  content: '';
+  position: static;
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  flex: none;
+  background-color: var(--blue);
+  -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain;
+  mask-position: center; mask-repeat: no-repeat; mask-size: contain;
+}
+body.pizzuti .elementor :where(.home-where .pizzuti-li)::before {
+  content: '';
+  position: static;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  background-color: var(--sky);
+  -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain;
+  mask-position: center; mask-repeat: no-repeat; mask-size: contain;
+}
+body.pizzuti .elementor :where(.contact-list .pizzuti-li)::before {
+  content: '';
+  position: static;
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-top: .2rem;
+  background-color: var(--blue);
+  -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain;
+  mask-position: center; mask-repeat: no-repeat; mask-size: contain;
+}
+body.pizzuti .elementor :where(.check-list .pizzuti-li)::before {
+  content: '';
+  position: static;
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-top: .15rem;
+  background-color: var(--blue);
+  -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain;
+  mask-position: center; mask-repeat: no-repeat; mask-size: contain;
+}
+body.pizzuti .elementor :where(.map-consent-box.pizzuti-ico-pin)::before {
+  content: '';
+  position: static;
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--blue);
+  -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain;
+  mask-position: center; mask-repeat: no-repeat; mask-size: contain;
+}
+body.pizzuti .elementor :is(.tone-blue, .tone-ink, .on-dark, .panel:not(.sky)) :where(.chip, .contact-list .pizzuti-li, .check-list .pizzuti-li)::before {
+  background-color: var(--sky);
+}
+body.pizzuti .elementor :where(.footer-contact .pizzuti-li)::before {
+  content: '';
+  position: static;
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: .2rem;
+  background-color: var(--sky);
+  -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain;
+  mask-position: center; mask-repeat: no-repeat; mask-size: contain;
+}
+body.pizzuti .elementor :where(.footer-social a)::before {
+  content: '';
+  position: static;
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  background-color: currentColor;
+  -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain;
+  mask-position: center; mask-repeat: no-repeat; mask-size: contain;
+}
+body.pizzuti .elementor :where(.footer-top)::before {
+  content: '';
+  position: static;
+  display: block;
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: none;
+  background-color: currentColor;
+  -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; -webkit-mask-size: contain;
+  mask-position: center; mask-repeat: no-repeat; mask-size: contain;
+}
+body.pizzuti .elementor :where(.link-rows a.pizzuti-ico-arrow-right)::after {
+  content: '';
+  display: block;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: var(--blue);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+body.pizzuti .elementor :is(.tone-blue, .tone-ink, .on-dark, .panel:not(.sky)) :where(.link-rows a.pizzuti-ico-arrow-right)::after {
+  background-color: var(--sky);
+}
+
+body.pizzuti .elementor :where(.pizzuti-ico-phone)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-whatsapp)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.5L3 21zM9 8.5c0 3.5 3 6.5 6.500 6.500l1-1.500-2-1-1 .8a4.500 4.500 0 0 1-2-2l.8-1-1-2L9 8.500z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.5L3 21zM9 8.5c0 3.5 3 6.5 6.500 6.500l1-1.500-2-1-1 .8a4.500 4.500 0 0 1-2-2l.8-1-1-2L9 8.500z'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-arrow)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-pin)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s7-6 7-11.500a7 7 0 1 0-14 0C5 15 12 21 12 21zM12 12a2.500 2.500 0 1 0 0-5 2.500 2.500 0 0 0 0 5z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s7-6 7-11.500a7 7 0 1 0-14 0C5 15 12 21 12 21zM12 12a2.500 2.500 0 1 0 0-5 2.500 2.500 0 0 0 0 5z'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-mail)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16v14H4zM4 7l8 6 8-6'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16v14H4zM4 7l8 6 8-6'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-facebook)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-instagram)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM17.500 6.500h.01'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM17.500 6.500h.01'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-up)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20V5M6 11l6-6 6 6'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20V5M6 11l6-6 6 6'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-users)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 11a3.500 3.500 0 1 0 0-7 3.500 3.500 0 0 0 0 7zM2.500 20a6.500 6.500 0 0 1 13 0M16.500 4.200a3.500 3.500 0 0 1 0 6.600M18 14a6.500 6.500 0 0 1 3.500 6'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 11a3.500 3.500 0 1 0 0-7 3.500 3.500 0 0 0 0 7zM2.500 20a6.500 6.500 0 0 1 13 0M16.500 4.200a3.500 3.500 0 0 1 0 6.600M18 14a6.500 6.500 0 0 1 3.500 6'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-clock)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-check)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-plus)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-heart)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-8-5-8-11a4.500 4.500 0 0 1 8-2.500A4.500 4.500 0 0 1 20 9c0 6-8 11-8 11z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20s-8-5-8-11a4.500 4.500 0 0 1 8-2.500A4.500 4.500 0 0 1 20 9c0 6-8 11-8 11z'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-chat)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16v11H9l-5 4V5z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16v11H9l-5 4V5z'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-user)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-refresh)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 11a8 8 0 1 0-2.300 6M20 4v7h-7'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 11a8 8 0 1 0-2.300 6M20 4v7h-7'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-shield)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6l8-3z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6l8-3z'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-drop)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3s6 6.500 6 11a6 6 0 0 1-12 0c0-4.500 6-11 6-11z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3s6 6.500 6 11a6 6 0 0 1-12 0c0-4.500 6-11 6-11z'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-moon)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 14.500A8 8 0 1 1 9.500 4a6.500 6.500 0 0 0 10.500 10.500z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 14.500A8 8 0 1 1 9.500 4a6.500 6.500 0 0 0 10.500 10.500z'/%3E%3C/svg%3E");
+}
+body.pizzuti .elementor :where(.pizzuti-ico-music)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18V6l11-2v12M9 18a3 3 0 1 1-3-3 3 3 0 0 1 3 3zM20 16a3 3 0 1 1-3-3 3 3 0 0 1 3 3z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18V6l11-2v12M9 18a3 3 0 1 1-3-3 3 3 0 0 1 3 3zM20 16a3 3 0 1 1-3-3 3 3 0 0 1 3 3z'/%3E%3C/svg%3E");
+}
+
+/* ===== Header & Menu WordPress (widget nav-menu + menu mobile .m-menu) =========================== */
+body.pizzuti .elementor .elementor-widget-nav-menu {
+  margin: 0; padding: 0;
+}
+body.pizzuti .elementor .elementor-widget-nav-menu .elementor-widget-container,
+body.pizzuti .elementor .elementor-widget-nav-menu .elementor-nav-menu--main {
+  display: contents;
+}
+body.pizzuti .elementor .elementor-widget-nav-menu .elementor-menu-toggle,
+body.pizzuti .elementor .elementor-widget-nav-menu .elementor-nav-menu--dropdown {
+  display: none !important;
+}
+body.pizzuti .elementor .elementor-nav-menu {
+  margin: 0; padding: 0; list-style: none; line-height: inherit;
+}
+body.pizzuti .elementor .elementor-nav-menu::before,
+body.pizzuti .elementor .elementor-nav-menu::after {
+  display: none; content: none;
+}
+body.pizzuti .elementor .elementor-nav-menu li {
+  margin: 0; padding: 0; line-height: inherit;
+}
+body.pizzuti .elementor .elementor-nav-menu--main .elementor-nav-menu a.elementor-item {
+  font-family: inherit; font-size: inherit; font-weight: inherit; color: inherit;
+  background: transparent; padding: 0; line-height: inherit;
+}
+body.pizzuti .elementor .elementor-nav-menu a.elementor-item::before,
+body.pizzuti .elementor .elementor-nav-menu a.elementor-item::after {
+  display: none; content: none;
+}
+
+/* Header desktop nav */
+body.pizzuti .elementor .site-header .pizzuti-header-nav { display: none; }
+@media (min-width: 900px) {
+  body.pizzuti .elementor .site-header .pizzuti-header-nav { display: flex; }
+  body.pizzuti .elementor .site-header .pizzuti-header-nav .elementor-nav-menu {
+    display: flex; flex-wrap: nowrap; gap: 2rem; font-weight: 600; font-size: var(--step--1);
+  }
+  body.pizzuti .elementor .site-header .pizzuti-header-nav .elementor-nav-menu a.elementor-item {
+    display: inline-block; text-decoration: none; padding-block: .5rem; border-bottom: 3px solid transparent;
+    color: var(--ink);
+  }
+  body.pizzuti .elementor .site-header .pizzuti-header-nav .elementor-nav-menu a.elementor-item:hover {
+    border-bottom-color: var(--blue);
+  }
+  body.pizzuti .elementor .site-header .pizzuti-header-nav .elementor-nav-menu a.elementor-item[aria-current],
+  body.pizzuti .elementor .site-header .pizzuti-header-nav .elementor-nav-menu li.current-menu-item > a.elementor-item {
+    border-bottom-color: var(--ink);
+  }
+}
+
+/* Header mobile menu (.m-menu con pulsante .m-menu-summary + pannello .m-menu-nav) */
+body.pizzuti .elementor .m-menu .m-menu-summary {
+  appearance: none; background: transparent; color: var(--ink); font: inherit;
+  cursor: pointer; font-weight: 700; padding: .85rem 1.25rem; min-height: 3.25rem;
+  display: inline-flex; align-items: center; border: 3px solid var(--ink); border-radius: 999px;
+  line-height: 1.6;
+}
+body.pizzuti .elementor .m-menu .m-menu-nav {
+  display: none;
+}
+body.pizzuti .elementor .m-menu.is-open .m-menu-nav {
+  position: absolute; right: 0; top: calc(100% + .5rem); z-index: 60;
+  display: grid; min-width: 14rem; background: #fff;
+  border: 2px solid var(--ink); border-radius: var(--radius-sm); padding: .5rem;
+}
+body.pizzuti .elementor .m-menu .m-menu-nav .elementor-nav-menu {
+  display: grid; gap: 0;
+}
+body.pizzuti .elementor .m-menu .m-menu-nav .elementor-nav-menu a.elementor-item {
+  display: block; padding: 1rem; font-weight: 700; text-decoration: none;
+  border-radius: .5rem; color: var(--ink); font-size: var(--step-0);
+}
+body.pizzuti .elementor .m-menu .m-menu-nav .elementor-nav-menu a.elementor-item:hover,
+body.pizzuti .elementor .m-menu .m-menu-nav .elementor-nav-menu a.elementor-item[aria-current],
+body.pizzuti .elementor .m-menu .m-menu-nav .elementor-nav-menu li.current-menu-item > a.elementor-item {
+  background: var(--sky-soft);
+}
+
+/* ===== Footer: menu WordPress e riga inferiore =================================================== */
+body.pizzuti .elementor .site-footer .footer-col .elementor-nav-menu {
+  display: grid; gap: .1rem;
+}
+body.pizzuti .elementor .site-footer .footer-col .elementor-nav-menu a.elementor-item {
+  display: inline-block; padding-block: .45rem; text-decoration: underline;
+  text-underline-offset: .25em; color: #fff;
+}
+body.pizzuti .elementor .site-footer .footer-col .elementor-nav-menu a.elementor-item:hover {
+  color: var(--sky);
+}
+body.pizzuti .elementor .site-footer .footer-contact a {
+  text-decoration: underline; text-underline-offset: .25em;
+}
+body.pizzuti .elementor .site-footer .pizzuti-footer-bottom-links {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1.5rem;
+}
+body.pizzuti .elementor .site-footer .pizzuti-footer-bottom-links .elementor-widget-nav-menu,
+body.pizzuti .elementor .site-footer .pizzuti-footer-bottom-links .elementor-nav-menu {
+  display: contents;
+}
+body.pizzuti .elementor .site-footer .pizzuti-footer-bottom-links .elementor-nav-menu a.elementor-item {
+  display: inline-block; padding-block: .4rem; text-decoration: underline;
+  text-underline-offset: .25em; color: #fff;
+}
+body.pizzuti .elementor .site-footer .pizzuti-footer-bottom-links .elementor-nav-menu a.elementor-item:hover {
+  color: var(--sky);
+}
+body.pizzuti .elementor .site-footer .footer-top {
+  padding-block: .4rem; color: #fff; text-decoration: underline; text-underline-offset: .25em;
+}
+body.pizzuti .elementor .site-footer .footer-top:hover {
+  color: var(--sky);
+}
+
+/* ===== Pagina 404: .link-rows con testi diretti + freccia ::after ================================ */
+body.pizzuti .elementor .link-rows a h3 { grid-column: 1; }
+body.pizzuti .elementor .link-rows a p { grid-column: 1; }
+
+/* ===== FAQ native Elementor V4 (e-accordion con faq_schema: true) ================================ */
+body.pizzuti .elementor .faq .e-accordion-item {
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+  margin: 0;
+  padding: 0;
+}
+body.pizzuti .elementor .faq .e-accordion-item-header {
+  display: grid;
+  grid-template-columns: 1fr 1.75rem;
+  gap: 1rem;
+  align-items: center;
+  min-height: 4.5rem;
+  padding: 1.1rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+  font-size: var(--step-1);
+  line-height: 1.25;
+  color: inherit;
+  background: transparent;
+}
+body.pizzuti .elementor .faq .e-accordion-item-header::-webkit-details-marker { display: none; }
+body.pizzuti .elementor .faq .e-accordion-item-title {
+  margin: 0; padding: 0; font: inherit; color: inherit; display: block;
+}
+body.pizzuti .elementor .faq .e-accordion-item-header::after {
+  content: '';
+  display: block;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: var(--blue);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform .2s ease-out;
+}
+body.pizzuti .elementor :is(.tone-blue, .tone-ink, .on-dark, .panel:not(.sky)) .faq .e-accordion-item-header::after {
+  background-color: var(--sky);
+}
+body.pizzuti .elementor .faq details[open] > .e-accordion-item-header::after {
+  transform: rotate(45deg);
+}
+body.pizzuti .elementor .faq .e-accordion-item-content {
+  padding: 0;
+  margin: 0;
+}
+
+/* ===== Moduli nativi Elementor Pro V4 (e-form in Home e Contatti) ================================ */
+body.pizzuti .elementor .form .e-form-label {
+  display: block; margin: 0; padding: 0;
+}
+body.pizzuti .elementor .form .field .e-form-label {
+  font-weight: 700; font-size: var(--step-0); color: var(--ink);
+}
+body.pizzuti .elementor .form .field .e-form-label .hint {
+  font-weight: 400; font-size: var(--step--1); color: var(--fg-soft);
+}
+body.pizzuti .elementor .form .check .e-form-label {
+  font-weight: 400; font-size: var(--step--1); line-height: 1.6; color: var(--ink);
+}
+body.pizzuti .elementor .form .check input[type="checkbox"] {
+  width: 1.75rem; height: 1.75rem; margin: .1rem 0 0; accent-color: var(--ink); cursor: pointer;
+}
+body.pizzuti .elementor .form .e-form-submit-button {
+  width: 100%;
+}
+body.pizzuti .elementor .form .field textarea {
+  height: 8rem; min-height: 8rem;
+}
+body.pizzuti .elementor .form .e-form-honeypot {
+  position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; margin: 0; padding: 0;
+}
+body.pizzuti:not(.elementor-editor-active) .elementor .form:not(.form-state-success) .pizzuti-form-ok,
+body.pizzuti:not(.elementor-editor-active) .elementor .form:not(.form-state-error) .pizzuti-form-err {
+  display: none;
+}
+body.pizzuti .elementor .form.form-state-success .pizzuti-form-ok,
+body.pizzuti .elementor .form.form-state-error .pizzuti-form-err {
+  display: block;
+}
+body.pizzuti .elementor .form .pizzuti-form-err {
+  background: #fdebec; color: var(--red-deep); border: 2px solid var(--red-deep);
+}

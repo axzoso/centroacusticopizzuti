@@ -1,0 +1,5 @@
+tools/out/
+tools/.mcp-locale.json
+mockup/dist/
+mockup/node_modules/
+mockup/.astro/
